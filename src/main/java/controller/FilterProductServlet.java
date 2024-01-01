@@ -5,25 +5,23 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.SubCategory;
+import model.Product;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale.Category;
 
-import dal.CategoryDAO;
-import dal.SubCategoryDAO;
+import dal.ProductDAO;
 
 /**
- * Servlet implementation class HeaderServlet
+ * Servlet implementation class FilterProductServlet
  */
-public class HeaderServlet extends HttpServlet {
+public class FilterProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HeaderServlet() {
+    public FilterProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,16 +31,19 @@ public class HeaderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-        // Lấy danh sách categories từ database
-        CategoryDAO cd = new CategoryDAO();
-        List<model.Category> categories = cd.getAllCategory();
-       
+		int minPrice = Integer.parseInt(request.getParameter("minPrice"));
+        int maxPrice = Integer.parseInt(request.getParameter("maxPrice"));
 
-        // Lưu danh sách vào Session
-        request.getSession().setAttribute("categories", categories);
+        ProductDAO pd = new ProductDAO();	
+        
+        // Thực hiện logic lọc sản phẩm
+        List<Product> filteredProducts = pd.getProductByPrice(minPrice, maxPrice);
 
-        // Chuyển hướng đến index.jsp hoặc trang chính của bạn
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        // Lưu danh sách sản phẩm vào request
+        request.setAttribute("products", filteredProducts);
+
+        // Chuyển dữ liệu sang trang JSP để hiển thị
+        request.getRequestDispatcher("shop.jsp").forward(request, response);
 	}
 
 	/**

@@ -2,17 +2,17 @@ package model;
 
 public class SubCategory {
 	private int subcategoryId;
-	private String name;
+	private String subcategoryName;
 	private String link;
 	private Category category;
 
 	public SubCategory() {
 	}
 
-	public SubCategory(int subcategoryId, String name, String link, Category category) {
+	public SubCategory(int subcategoryId, String subcategoryName, String link, Category category) {
 		super();
 		this.subcategoryId = subcategoryId;
-		this.name = name;
+		this.subcategoryName = subcategoryName;
 		this.link = link;
 		this.category = category;
 	}
@@ -25,12 +25,12 @@ public class SubCategory {
 		this.subcategoryId = subcategoryId;
 	}
 
-	public String getName() {
-		return name;
+	public String getSubcategoryName() {
+		return subcategoryName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSubcategoryName(String subcategoryName) {
+		this.subcategoryName = subcategoryName;
 	}
 
 	public String getLink() {
@@ -51,7 +51,7 @@ public class SubCategory {
 
 	@Override
 	public String toString() {
-		return "SubCategory [subcategoryId=" + subcategoryId + ", name=" + name + ", link=" + link + ", category="
+		return "SubCategory [subcategoryId=" + subcategoryId + ", subcategoryName=" + subcategoryName + ", link=" + link + ", category="
 				+ category + "]";
 	}
 }

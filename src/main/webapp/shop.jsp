@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	
+
 	<div class="site-wrap">
 		<jsp:include page="header.jsp" />
 		<div class="bg-light py-3">
@@ -43,7 +43,7 @@
 						<div class="row">
 							<div class="col-md-12 mb-5">
 								<div class="float-md-left mb-4">
-									<h2 class="text-black h5">Shop All</h2>
+									<h2 class="text-black h5">Tất cả sản phẩm</h2>
 								</div>
 								<div class="d-flex">
 									<div class="dropdown mr-1 ml-md-auto">
@@ -78,16 +78,16 @@
 						<!--  -->
 						<div class="row mb-5">
 							<c:forEach var="product" items="${products}">
-								<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" >
+								<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 									<div class="block-4 text-center border">
 										<figure class="block-4-image">
-											<a href="shop-single.jsp?productId=${product.productId}"><img
+											<a href="ProductDetailsServlet?productId=${product.productId}"><img
 												src="${product.imageUrl}" alt="${product.productName}"
 												class="img-fluid"></a>
 										</figure>
 										<div class="block-4-text p-4">
 											<h3>
-												<a href="shop-single.jsp?productId=${product.productId}">${product.productName}</a>
+												<a href="ProductDetailsServlet?productId=${product.productId}">${product.productName}</a>
 											</h3>
 											<p class="mb-0">${product.description}</p>
 											<p class="text-primary font-weight-bold">${product.price}
@@ -116,21 +116,24 @@
 
 					<div class="col-md-3 order-1 mb-5 mb-md-0">
 						<div class="border p-4 rounded mb-4">
-							<h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+							<h3 class="mb-3 h6 text-uppercase text-black d-block">Theo danh mục</h3>
 							<ul class="list-unstyled mb-0">
-								<li class="mb-1"><a href="#" class="d-flex"><span>Men</span>
+								<!-- <li class="mb-1"><a href="#"  class="d-flex"><span>Men</span>
 										<span class="text-black ml-auto">(2,220)</span></a></li>
 								<li class="mb-1"><a href="#" class="d-flex"><span>Women</span>
 										<span class="text-black ml-auto">(2,550)</span></a></li>
 								<li class="mb-1"><a href="#" class="d-flex"><span>Children</span>
-										<span class="text-black ml-auto">(2,124)</span></a></li>
+										<span class="text-black ml-auto">(2,124)</span></a></li> -->
+								<c:forEach var="subcategory" items="${subcategories}">
+										<li class="mb-1"><a href="${subcategory.link }" class="d-flex"><span>${subcategory.subcategoryName}</span>
+										<span class="text-black ml-auto">(2,124)</span></a></li>									
+								</c:forEach>		              
 							</ul>
 						</div>
 
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
-								<h3 class="mb-3 h6 text-uppercase text-black d-block">Filter
-									by Price</h3>
+								<h3 class="mb-3 h6 text-uppercase text-black d-block">Theo giá</h3>
 								<div id="slider-range" class="border-primary"></div>
 								<input type="text" name="text" id="amount"
 									class="form-control border-0 pl-0 bg-white" disabled="" />
@@ -270,6 +273,65 @@
 	<script src="js/aos.js"></script>
 
 	<script src="js/main.js"></script>
+
+<script>
+    $(function() {
+        var sliderRange = $("#slider-range");
+        var amountInput = $("#amount");
+
+        sliderRange.slider({
+            range: true,
+            min: 0,
+            max: 10000000,
+            step: 50000, // Bước giá trị
+            values: [0, 2500000],
+            slide: function(event, ui) {
+                updateAmountInput(ui.values[0], ui.values[1]);
+            },
+            input: function(event, ui) {
+                updateAmountInput(ui.values[0], ui.values[1]);
+            },
+            change: function(event, ui) {
+                var minPrice = ui.values[0];
+                var maxPrice = ui.values[1];
+
+                // Sử dụng Ajax để gửi yêu cầu đến Servlet
+                $.ajax({
+                    url: "FilterProductsServlet", // Đường dẫn tới Servlet
+                    data: { minPrice: minPrice, maxPrice: maxPrice },
+                    type: "GET",
+                    success: function(response) {
+                        // Hiển thị sản phẩm sau khi lọc
+                        $("#filtered-products").html(response);
+                    },
+                    error: function(error) {
+                        console.log("Error:", error);
+                    }
+                });
+            }
+        });
+
+        function updateAmountInput(minValue, maxValue) {
+            var formattedMinValue = formatCurrency(minValue);
+            var formattedMaxValue = formatCurrency(maxValue);
+
+            amountInput.val(formattedMinValue + " - " + formattedMaxValue);
+        }
+
+        function formatCurrency(value) {
+            // Định dạng giá trị theo đơn vị tiền tệ của bạn
+            var currencyFormat = new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            });
+
+            return currencyFormat.format(value);
+        }
+
+        // Khởi tạo giá trị ban đầu cho input
+        updateAmountInput(sliderRange.slider("values", 0), sliderRange.slider("values", 1));
+    });
+</script>
 
 </body>
 </html>

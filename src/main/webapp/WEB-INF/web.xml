@@ -74,4 +74,24 @@
     <servlet-name>ListServlet</servlet-name>
     <url-pattern>/ListServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FilterProductServlet</display-name>
+    <servlet-name>FilterProductServlet</servlet-name>
+    <servlet-class>controller.FilterProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FilterProductServlet</servlet-name>
+    <url-pattern>/FilterProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProductDetailsServlet</display-name>
+    <servlet-name>ProductDetailsServlet</servlet-name>
+    <servlet-class>controller.ProductDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductDetailsServlet</servlet-name>
+    <url-pattern>/ProductDetailsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
