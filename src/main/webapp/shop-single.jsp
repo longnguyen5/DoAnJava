@@ -27,8 +27,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 mb-0">
-						<a href="index.jsp">Sản phẩm</a> <span class="mx-2 mb-0">/</span> <strong
-							class="text-black">${c.ProductName}</strong>
+						<a href="ProductServlet">Sản phẩm</a> <span class="mx-2 mb-0">/</span> <strong
+							class="text-black">${c.productName}</strong>
 					</div>
 				</div>
 			</div>
@@ -38,20 +38,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<img src="images/cloth_1.jpg" alt="Image" class="img-fluid">
+						<img src="${c.imageUrl}" alt="Image" class="img-fluid">
 					</div>
 					<div class="col-md-6">
-						<h2 class="text-black">Tank Top T-Shirt</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-							Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores
-							iusto! Molestiae expedita veritatis nesciunt doloremque sint
-							asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
-						<p class="mb-4">Ex numquam veritatis debitis minima quo error
-							quam eos dolorum quidem perferendis. Quos repellat dignissimos
-							minus, eveniet nam voluptatibus molestias omnis reiciendis
-							perspiciatis illum hic magni iste, velit aperiam quis.</p>
+						<h2 class="text-black">${c.productName }</h2>
+						<p>${c.sku }</p>
+						<p class="mb-4">${c.manufacturer.manufacturerName }</p>
+						<p class="mb-4">${c.description }</p>
 						<p>
-							<strong class="text-primary h4">$50.00</strong>
+							<strong class="text-primary h4">${c.price}VND</strong>
 						</p>
 						<div class="mb-1 d-flex">
 							<label for="option-sm" class="d-flex mr-3 mb-3"> <span
@@ -93,8 +88,7 @@
 
 						</div>
 						<p>
-							<a href="cart.jsp" class="buy-now btn btn-sm btn-primary">Add
-								To Cart</a>
+							<a href="cart.jsp" class="buy-now btn btn-sm btn-primary">Thêm vào giỏ</a>
 						</p>
 
 					</div>
@@ -106,7 +100,7 @@
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-7 site-section-heading text-center pt-4">
-						<h2>Featured Products</h2>
+						<h2>Sản phẩm nổi bật</h2>
 					</div>
 				</div>
 				<div class="row">

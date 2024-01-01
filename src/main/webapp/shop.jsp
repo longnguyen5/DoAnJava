@@ -27,8 +27,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 mb-0">
-						<a href="index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <strong
-							class="text-black">Shop</strong>
+						<a href="index.jsp">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong
+							class="text-black">Tất cả sản phẩm</strong>
 					</div>
 				</div>
 			</div>

@@ -47,7 +47,7 @@ public class ProductDAO extends DBContext {
 	}
 
 	public Product getProductById(int id) {
-		String sSql = "Select * from `products where `productId` = ?";
+		String sSql = "Select * from `products` where `productId` = ?";
 		try {
 			PreparedStatement ps = connection.prepareStatement(sSql);
 			ps.setInt(1, id);
