@@ -205,4 +205,68 @@ public class ProductDAO extends DBContext {
 		}
 		return list;
 	}
+	
+	public List<Product> getProducts(int currentPage, int pageSize) {
+	    // Tính toán vị trí bắt đầu của sản phẩm trong kết quả truy vấn
+	    int startIdx = (currentPage - 1) * pageSize;
+	    List<Product> products = new ArrayList<>();
+
+	    // Thực hiện truy vấn SQL
+	    // Ví dụ sử dụng JDBC:
+	    String sql = "SELECT * FROM `products` LIMIT ?, ?";
+	    
+	    try {
+	        PreparedStatement statement = connection.prepareStatement(sql);
+	        statement.setInt(1, startIdx);
+	        statement.setInt(2, pageSize);
+
+	        ResultSet rs = statement.executeQuery();
+
+	        while (rs.next()) {
+				int productId = rs.getInt(1);
+				String productName = rs.getString(2);
+				String sku = rs.getString(3);
+				String description = rs.getString(4);
+				double price = rs.getDouble(5);
+				int quantityInStock = rs.getInt(6);
+
+				ManufacturerDAO cm = new ManufacturerDAO();
+				Manufacturer manufacturer = cm.getManufacturerById(rs.getInt(7));
+
+				String productionDate = rs.getString(8);
+				String expirationDate = rs.getString(9);
+
+				SubCategoryDAO subCategoryDAO = new SubCategoryDAO();
+				SubCategory subCategory = subCategoryDAO.getSubCategoryById(rs.getInt(10));
+
+				String imageUrl = rs.getString(11);
+				String status = rs.getString(12);
+
+				// Tạo đối tượng Product và thêm vào danh sách
+				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
+						manufacturer, productionDate, expirationDate, subCategory, imageUrl, status);
+				products.add(product);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return products;
+	}
+
+	public int getTotalProducts() {
+		String sSql = "select count(*) from `products`";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sSql);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 }

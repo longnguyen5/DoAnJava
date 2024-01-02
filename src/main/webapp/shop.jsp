@@ -27,8 +27,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 mb-0">
-						<a href="index.jsp">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong
-							class="text-black">Tất cả sản phẩm</strong>
+						<a href="index.jsp">Trang chủ</a> <span class="mx-2 mb-0">/</span>
+						<strong class="text-black">Tất cả sản phẩm</strong>
 					</div>
 				</div>
 			</div>
@@ -47,49 +47,48 @@
 								</div>
 								<div class="d-flex">
 									<div class="dropdown mr-1 ml-md-auto">
-										<button type="button"
-											class="btn btn-secondary btn-sm dropdown-toggle"
-											id="dropdownMenuOffset" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false">Latest</button>
-										<div class="dropdown-menu"
-											aria-labelledby="dropdownMenuOffset">
-											<a class="dropdown-item" href="#">Men</a> <a
-												class="dropdown-item" href="#">Women</a> <a
-												class="dropdown-item" href="#">Children</a>
-										</div>
-									</div>
-									<div class="btn-group">
-										<button type="button"
-											class="btn btn-secondary btn-sm dropdown-toggle"
-											id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
-										<div class="dropdown-menu"
-											aria-labelledby="dropdownMenuReference">
-											<a class="dropdown-item" href="#">Relevance</a> <a
-												class="dropdown-item" href="#">Name, A to Z</a> <a
-												class="dropdown-item" href="#">Name, Z to A</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item" href="#">Price, low to high</a> <a
-												class="dropdown-item" href="#">Price, high to low</a>
+										<div class="btn-group">
+											<button type="button"
+												class="btn btn-secondary btn-sm dropdown-toggle"
+												id="dropdownMenuReference" data-toggle="dropdown">Sắp xếp theo</button>
+											<div class="dropdown-menu"
+												aria-labelledby="dropdownMenuReference">
+												<a class="dropdown-item" href="#">Theo</a> <a
+													class="dropdown-item" href="#">Tên, từ A đến Z</a> <a
+													class="dropdown-item" href="#">Tên, từ Z đến A</a>
+												<div class="dropdown-divider"></div>
+												<a class="dropdown-item" href="#">Giá, từ thấp đến cao</a> <a
+													class="dropdown-item" href="#">Giá, từ cao đến thấp</a>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!--  -->
+						<!-- Hiện danh sách sản phẩm -->
 						<div class="row mb-5">
 							<c:forEach var="product" items="${products}">
 								<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 									<div class="block-4 text-center border">
 										<figure class="block-4-image">
-											<a href="ProductDetailsServlet?productId=${product.productId}"><img
+											<a
+												href="ProductDetailsServlet?productId=${product.productId}"><img
 												src="${product.imageUrl}" alt="${product.productName}"
 												class="img-fluid"></a>
 										</figure>
 										<div class="block-4-text p-4">
 											<h3>
-												<a href="ProductDetailsServlet?productId=${product.productId}">${product.productName}</a>
+												<a href="ProductDetailsServlet?productId=${product.productId}">            
+													<script>
+                										document.write("${product.productName}".length > 20 ? "${product.productName}".substring(0, 20) + '...' : "${product.productName}");
+            										</script>
+            									</a>
 											</h3>
-											<p class="mb-0">${product.description}</p>
+											<p class="mb-0">
+												<script>
+            											document.write("${product.description}".length > 50 ? "${product.description}".substring(0, 50) + '...' : "${product.description}");
+        										</script>
+											</p>
 											<p class="text-primary font-weight-bold">${product.price}
 												VNĐ</p>
 										</div>
@@ -101,13 +100,24 @@
 							<div class="col-md-12 text-center">
 								<div class="site-block-27">
 									<ul>
-										<li><a href="#">&lt;</a></li>
-										<li class="active"><span>1</span></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">&gt;</a></li>
+										<c:if test="${currentPage > 1}">
+											<li><a href="ProductServlet?page=${currentPage - 1}">&lt;</a></li>
+										</c:if>
+
+										<c:forEach var="page" begin="1" end="${totalPages}">
+											<c:choose>
+												<c:when test="${page eq currentPage}">
+													<li class="active"><span>${page}</span></li>
+												</c:when>
+												<c:otherwise>
+													<li><a href="ProductServlet?page=${page}">${page}</a></li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+
+										<c:if test="${currentPage < totalPages}">
+											<li><a href="ProductServlet?page=${currentPage + 1}">&gt;</a></li>
+										</c:if>
 									</ul>
 								</div>
 							</div>
@@ -116,30 +126,27 @@
 
 					<div class="col-md-3 order-1 mb-5 mb-md-0">
 						<div class="border p-4 rounded mb-4">
-							<h3 class="mb-3 h6 text-uppercase text-black d-block">Theo danh mục</h3>
+							<h3 class="mb-3 h6 text-uppercase text-black d-block">Theo
+								danh mục</h3>
 							<ul class="list-unstyled mb-0">
-								<!-- <li class="mb-1"><a href="#"  class="d-flex"><span>Men</span>
-										<span class="text-black ml-auto">(2,220)</span></a></li>
-								<li class="mb-1"><a href="#" class="d-flex"><span>Women</span>
-										<span class="text-black ml-auto">(2,550)</span></a></li>
-								<li class="mb-1"><a href="#" class="d-flex"><span>Children</span>
-										<span class="text-black ml-auto">(2,124)</span></a></li> -->
 								<c:forEach var="subcategory" items="${subcategories}">
-										<li class="mb-1"><a href="${subcategory.link }" class="d-flex"><span>${subcategory.subcategoryName}</span>
-										<span class="text-black ml-auto">(2,124)</span></a></li>									
-								</c:forEach>		              
+									<li class="mb-1"><a href="${subcategory.link }"
+										class="d-flex"><span>${subcategory.subcategoryName}</span>
+											<span class="text-black ml-auto">(2,124)</span></a></li>
+								</c:forEach>
 							</ul>
 						</div>
 
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
-								<h3 class="mb-3 h6 text-uppercase text-black d-block">Theo giá</h3>
+								<h3 class="mb-3 h6 text-uppercase text-black d-block">Theo
+									giá</h3>
 								<div id="slider-range" class="border-primary"></div>
 								<input type="text" name="text" id="amount"
 									class="form-control border-0 pl-0 bg-white" disabled="" />
 							</div>
-
-							<div class="mb-4">
+							<a href="#" class="btn btn-sm btn-primary">Áp dụng</a>
+							<!-- <div class="mb-4">
 								<h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
 								<label for="s_sm" class="d-flex"> <input type="checkbox"
 									id="s_sm" class="mr-2 mt-1"> <span class="text-black">Small
@@ -168,7 +175,7 @@
 									class="bg-primary color d-inline-block rounded-circle mr-2"></span>
 									<span class="text-black">Purple (1,075)</span>
 								</a>
-							</div>
+							</div> -->
 
 						</div>
 					</div>
@@ -274,64 +281,68 @@
 
 	<script src="js/main.js"></script>
 
-<script>
-    $(function() {
-        var sliderRange = $("#slider-range");
-        var amountInput = $("#amount");
+	<script>
+		$(function() {
+			var sliderRange = $("#slider-range");
+			var amountInput = $("#amount");
 
-        sliderRange.slider({
-            range: true,
-            min: 0,
-            max: 10000000,
-            step: 50000, // Bước giá trị
-            values: [0, 2500000],
-            slide: function(event, ui) {
-                updateAmountInput(ui.values[0], ui.values[1]);
-            },
-            input: function(event, ui) {
-                updateAmountInput(ui.values[0], ui.values[1]);
-            },
-            change: function(event, ui) {
-                var minPrice = ui.values[0];
-                var maxPrice = ui.values[1];
+			sliderRange.slider({
+				range : true,
+				min : 0,
+				max : 10000000,
+				step : 50000, // Bước giá trị
+				values : [ 0, 2500000 ],
+				slide : function(event, ui) {
+					updateAmountInput(ui.values[0], ui.values[1]);
+				},
+				input : function(event, ui) {
+					updateAmountInput(ui.values[0], ui.values[1]);
+				},
+				change : function(event, ui) {
+					var minPrice = ui.values[0];
+					var maxPrice = ui.values[1];
 
-                // Sử dụng Ajax để gửi yêu cầu đến Servlet
-                $.ajax({
-                    url: "FilterProductsServlet", // Đường dẫn tới Servlet
-                    data: { minPrice: minPrice, maxPrice: maxPrice },
-                    type: "GET",
-                    success: function(response) {
-                        // Hiển thị sản phẩm sau khi lọc
-                        $("#filtered-products").html(response);
-                    },
-                    error: function(error) {
-                        console.log("Error:", error);
-                    }
-                });
-            }
-        });
+					// Sử dụng Ajax để gửi yêu cầu đến Servlet
+					$.ajax({
+						url : "FilterProductsServlet", // Đường dẫn tới Servlet
+						data : {
+							minPrice : minPrice,
+							maxPrice : maxPrice
+						},
+						type : "GET",
+						success : function(response) {
+							// Hiển thị sản phẩm sau khi lọc
+							$("#filtered-products").html(response);
+						},
+						error : function(error) {
+							console.log("Error:", error);
+						}
+					});
+				}
+			});
 
-        function updateAmountInput(minValue, maxValue) {
-            var formattedMinValue = formatCurrency(minValue);
-            var formattedMaxValue = formatCurrency(maxValue);
+			function updateAmountInput(minValue, maxValue) {
+				var formattedMinValue = formatCurrency(minValue);
+				var formattedMaxValue = formatCurrency(maxValue);
 
-            amountInput.val(formattedMinValue + " - " + formattedMaxValue);
-        }
+				amountInput.val(formattedMinValue + " - " + formattedMaxValue);
+			}
 
-        function formatCurrency(value) {
-            // Định dạng giá trị theo đơn vị tiền tệ của bạn
-            var currencyFormat = new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            });
+			function formatCurrency(value) {
+				// Định dạng giá trị theo đơn vị tiền tệ của bạn
+				var currencyFormat = new Intl.NumberFormat('vi-VN', {
+					style : 'currency',
+					currency : 'VND'
+				});
 
-            return currencyFormat.format(value);
-        }
+				return currencyFormat.format(value);
+			}
 
-        // Khởi tạo giá trị ban đầu cho input
-        updateAmountInput(sliderRange.slider("values", 0), sliderRange.slider("values", 1));
-    });
-</script>
+			// Khởi tạo giá trị ban đầu cho input
+			updateAmountInput(sliderRange.slider("values", 0), sliderRange
+					.slider("values", 1));
+		});
+	</script>
 
 </body>
 </html>

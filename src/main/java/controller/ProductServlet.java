@@ -39,8 +39,17 @@ public class ProductServlet extends HttpServlet {
 		// Khởi tạo đối tượng ProductDAO
 		ProductDAO productDAO = new ProductDAO();
 
+		// Xác định trang hiện tại
+		int currentPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+		int pageSize = 12; // Số lượng sản phẩm trên mỗi trang
+
 		// Lấy tất cả sản phẩm
-		List<Product> products = productDAO.getAll();
+		List<Product> products = productDAO.getProducts(currentPage, pageSize);
+
+		int totalProducts = productDAO.getTotalProducts();
+
+		// Xác định tổng số trang
+		int totalPages = (int) Math.ceil((double) totalProducts / pageSize);
 
 		SubCategoryDAO scd = new SubCategoryDAO();
 		List<SubCategory> subcategories = scd.getAll();
@@ -49,7 +58,12 @@ public class ProductServlet extends HttpServlet {
 
 		// Lưu trữ danh sách sản phẩm vào request attribute
 		request.setAttribute("products", products);
-
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("totalPages", totalPages);
+		
+		System.out.println("Current Page: " + currentPage);
+        System.out.println("Total Pages: " + totalPages);
+		
 		// Chuyển hướng đến trang JSP để hiển thị sản phẩm
 		request.getRequestDispatcher("shop.jsp").forward(request, response);
 	}
