@@ -60,9 +60,10 @@ public class ProductServlet extends HttpServlet {
 		request.setAttribute("products", products);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("totalPages", totalPages);
-		
-		System.out.println("Current Page: " + currentPage);
-        System.out.println("Total Pages: " + totalPages);
+		/*
+		 * System.out.println("Current Page: " + currentPage);
+		 * System.out.println("Total Pages: " + totalPages);
+		 */
 		
 		// Chuyển hướng đến trang JSP để hiển thị sản phẩm
 		request.getRequestDispatcher("shop.jsp").forward(request, response);

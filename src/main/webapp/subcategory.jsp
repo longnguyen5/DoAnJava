@@ -23,12 +23,13 @@
 
 	<div class="site-wrap">
 		<jsp:include page="header.jsp" />
+		<c:set value="${spec}" var="c"/>
 		<div class="bg-light py-3">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 mb-0">
 						<a href="index.jsp">Trang chủ</a> <span class="mx-2 mb-0">/</span>
-						<strong class="text-black">Tất cả sản phẩm</strong>
+						<strong class="text-black">${c.subcategoryName}</strong>
 					</div>
 				</div>
 			</div>
@@ -43,7 +44,7 @@
 						<div class="row">
 							<div class="col-md-12 mb-5">
 								<div class="float-md-left mb-4">
-									<h2 class="text-black h5">Tất cả sản phẩm</h2>
+									<h2 class="text-black h5">${c.subcategoryName}</h2>
 								</div>
 								<div class="d-flex">
 									<div class="dropdown mr-1 ml-md-auto">
@@ -100,7 +101,7 @@
 								<div class="site-block-27">
 									<ul>
 										<c:if test="${currentPage > 1}">
-											<li><a href="ProductServlet?page=${currentPage - 1}">&lt;</a></li>
+											<li><a href="SubCategoryServlet?page=${currentPage - 1}">&lt;</a></li>
 										</c:if>
 
 										<c:forEach var="page" begin="1" end="${totalPages}">
@@ -109,13 +110,13 @@
 													<li class="active"><span>${page}</span></li>
 												</c:when>
 												<c:otherwise>
-													<li><a href="ProductServlet?page=${page}">${page}</a></li>
+													<li><a href="SubCategoryServlet?page=${page}">${page}</a></li>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
 
 										<c:if test="${currentPage < totalPages}">
-											<li><a href="ProductServlet?page=${currentPage + 1}">&gt;</a></li>
+											<li><a href="SubCategoryServlet?page=${currentPage + 1}">&gt;</a></li>
 										</c:if>
 									</ul>
 								</div>

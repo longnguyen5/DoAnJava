@@ -94,4 +94,24 @@
     <servlet-name>ProductDetailsServlet</servlet-name>
     <url-pattern>/ProductDetailsServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FilterProductsServlet</display-name>
+    <servlet-name>FilterProductsServlet</servlet-name>
+    <servlet-class>controller.FilterProductsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FilterProductsServlet</servlet-name>
+    <url-pattern>/FilterProductsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SubCategoriesServlet</display-name>
+    <servlet-name>SubCategoriesServlet</servlet-name>
+    <servlet-class>controller.SubCategoriesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubCategoriesServlet</servlet-name>
+    <url-pattern>/SubCategoriesServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -52,7 +52,7 @@ public class ProductDAO extends DBContext {
 			PreparedStatement ps = connection.prepareStatement(sSql);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				int productId = rs.getInt(1);
 				String productName = rs.getString(2);
 				String sku = rs.getString(3);
@@ -113,6 +113,42 @@ public class ProductDAO extends DBContext {
 				list.add(product);
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<Product> getProductsBySubCid(int id) {
+		List<Product> list = new ArrayList<>();
+		SubCategoryDAO subCategoryDAO = new SubCategoryDAO();
+		String sSql = "Select * from `products` where `subcategoryId` = ?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sSql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int productId = rs.getInt(1);
+				String productName = rs.getString(2);
+				String sku = rs.getString(3);
+				String description = rs.getString(4);
+				double price = rs.getDouble(5);
+				int quantityInStock = rs.getInt(6);
+				int manufacturerId = rs.getInt(7);
+				ManufacturerDAO md = new ManufacturerDAO();
+				Manufacturer manufacturer = md.getManufacturerById(manufacturerId);
+				String productionDate = rs.getString(8);
+				String expirationDate = rs.getString(9);
+				int subcategoryId = rs.getInt(10);
+				SubCategoryDAO sd = new SubCategoryDAO();
+				SubCategory subcategory = sd.getSubCategoryById(id);
+				String imageUrl = rs.getString(11);
+				String status = rs.getString(12);
+				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
+						manufacturer, productionDate, expirationDate, subcategory, imageUrl, status);
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -205,24 +241,24 @@ public class ProductDAO extends DBContext {
 		}
 		return list;
 	}
-	
+
 	public List<Product> getProducts(int currentPage, int pageSize) {
-	    // Tính toán vị trí bắt đầu của sản phẩm trong kết quả truy vấn
-	    int startIdx = (currentPage - 1) * pageSize;
-	    List<Product> products = new ArrayList<>();
+		// Tính toán vị trí bắt đầu của sản phẩm trong kết quả truy vấn
+		int startIdx = (currentPage - 1) * pageSize;
+		List<Product> products = new ArrayList<>();
 
-	    // Thực hiện truy vấn SQL
-	    // Ví dụ sử dụng JDBC:
-	    String sql = "SELECT * FROM `products` LIMIT ?, ?";
-	    
-	    try {
-	        PreparedStatement statement = connection.prepareStatement(sql);
-	        statement.setInt(1, startIdx);
-	        statement.setInt(2, pageSize);
+		// Thực hiện truy vấn SQL
+		// Ví dụ sử dụng JDBC:
+		String sql = "SELECT * FROM `products` LIMIT ?, ?";
 
-	        ResultSet rs = statement.executeQuery();
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setInt(1, startIdx);
+			statement.setInt(2, pageSize);
 
-	        while (rs.next()) {
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
 				int productId = rs.getInt(1);
 				String productName = rs.getString(2);
 				String sku = rs.getString(3);
@@ -246,12 +282,12 @@ public class ProductDAO extends DBContext {
 				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
 						manufacturer, productionDate, expirationDate, subCategory, imageUrl, status);
 				products.add(product);
-	        }
+			}
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return products;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return products;
 	}
 
 	public int getTotalProducts() {
@@ -259,14 +295,82 @@ public class ProductDAO extends DBContext {
 		try {
 			PreparedStatement ps = connection.prepareStatement(sSql);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				return rs.getInt(1);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return 0;
 	}
+
+	public List<Product> getProductsBySubCategoryId(int subcategoryId, int currentPage, int pageSize) {
+		// Tính offset để lấy sản phẩm từ vị trí thích hợp
+		int offset = (currentPage - 1) * pageSize;
+		List<Product> list = new ArrayList<>();
+		// Sử dụng offset và pageSize trong truy vấn SQL
+		String query = "SELECT * FROM products WHERE subcategory_id = ? LIMIT ?, ?";
+
+		try {
+			PreparedStatement preparedStatement;
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, subcategoryId);
+			preparedStatement.setInt(2, offset);
+			preparedStatement.setInt(3, pageSize);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				int productId = rs.getInt(1);
+				String productName = rs.getString(2);
+				String sku = rs.getString(3);
+				String description = rs.getString(4);
+				double price = rs.getDouble(5);
+				int quantityInStock = rs.getInt(6);
+
+				ManufacturerDAO cm = new ManufacturerDAO();
+				Manufacturer manufacturer = cm.getManufacturerById(rs.getInt(7));
+
+				String productionDate = rs.getString(8);
+				String expirationDate = rs.getString(9);
+
+				SubCategoryDAO subCategoryDAO = new SubCategoryDAO();
+				SubCategory subCategory = subCategoryDAO.getSubCategoryById(subcategoryId);
+
+				String imageUrl = rs.getString(11);
+				String status = rs.getString(12);
+
+				// Tạo đối tượng Product và thêm vào danh sách
+				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
+						manufacturer, productionDate, expirationDate, subCategory, imageUrl, status);
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public int getTotalProductsBySubCategoryId(int subcategoryId) {
+		String query = "SELECT COUNT(*) FROM products WHERE subcategoryId = ?";
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, subcategoryId);
+			try (ResultSet resultSet = preparedStatement.executeQuery()) {
+				if (resultSet.next()) {
+					// Trả về tổng số sản phẩm của danh mục
+					return resultSet.getInt(1);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
 }
