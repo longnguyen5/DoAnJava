@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Dr.Enal &mdash; Tôi là bánh đúc đây</title>
+	<title>Dr.Enal &mdash; Tôi là bánh khúc đây</title>
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet"
@@ -27,8 +27,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 mb-0">
-						<a href="index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <strong
-							class="text-black">Cart</strong>
+						<a href="index.jsp">Trang chủ</a> <span class="mx-2 mb-0">/</span> <strong
+							class="text-black">Giỏ hàng</strong>
 					</div>
 				</div>
 			</div>
@@ -118,25 +118,23 @@
 					<div class="col-md-6">
 						<div class="row mb-5">
 							<div class="col-md-6 mb-3 mb-md-0">
-								<button class="btn btn-primary btn-sm btn-block">Update
-									Cart</button>
+								<button class="btn btn-primary btn-sm btn-block">Cập nhật giỏ hàng</button>
 							</div>
 							<div class="col-md-6">
-								<button class="btn btn-outline-primary btn-sm btn-block">Continue
-									Shopping</button>
+								<button class="btn btn-outline-primary btn-sm btn-block">Tiếp tục mua</button>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<label class="text-black h4" for="coupon">Coupon</label>
-								<p>Enter your coupon code if you have one.</p>
+								<label class="text-black h4" for="coupon">Mã giảm giá</label>
+								<p>Nhập mã ở đây nếu bạn có mã giảm giá.</p>
 							</div>
 							<div class="col-md-8 mb-3 mb-md-0">
 								<input type="text" class="form-control py-3" id="coupon"
-									placeholder="Coupon Code">
+									placeholder="Mã giảm giá">
 							</div>
 							<div class="col-md-4">
-								<button class="btn btn-primary btn-sm">Apply Coupon</button>
+								<button class="btn btn-primary btn-sm">Áp dụng</button>
 							</div>
 						</div>
 					</div>
@@ -145,12 +143,12 @@
 							<div class="col-md-7">
 								<div class="row">
 									<div class="col-md-12 text-right border-bottom mb-5">
-										<h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+										<h3 class="text-black h4 text-uppercase">Tổng tiền giỏ</h3>
 									</div>
 								</div>
 								<div class="row mb-3">
 									<div class="col-md-6">
-										<span class="text-black">Subtotal</span>
+										<span class="text-black">Tổng phụ</span>
 									</div>
 									<div class="col-md-6 text-right">
 										<strong class="text-black">$230.00</strong>
@@ -158,7 +156,7 @@
 								</div>
 								<div class="row mb-5">
 									<div class="col-md-6">
-										<span class="text-black">Total</span>
+										<span class="text-black">Tổng</span>
 									</div>
 									<div class="col-md-6 text-right">
 										<strong class="text-black">$230.00</strong>
@@ -168,8 +166,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										<button class="btn btn-primary btn-lg py-3 btn-block"
-											onclick="window.location='checkout.jsp'">Proceed To
-											Checkout</button>
+											onclick="window.location='checkout.jsp'">Thanh toán</button>
 									</div>
 								</div>
 							</div>
