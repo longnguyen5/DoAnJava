@@ -403,5 +403,12 @@ public class ProductDAO extends DBContext {
 
         return filteredProductHtml.toString();
     }
+    
+	/*
+	 * public List<Product> getProductByKeyword(String keyword){ List<Product> list
+	 * = new ArrayList<>();
+	 * 
+	 * }
+	 */
 
 }

@@ -1,7 +1,7 @@
 package model;
 
 public class User {
-	private int userId;
+	private int Id;
 	private String email;
 	private String firstName;
 	private String lastName;
@@ -29,12 +29,12 @@ public class User {
 
 
 	public int getUserId() {
-		return userId;
+		return Id;
 	}
 
 	public User(int userId, String email, String firstName, String lastName, String address, String phone) {
-		super();
-		this.userId = userId;
+
+		this.Id = userId;
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -43,13 +43,13 @@ public class User {
 	}
 
 	public void setUserId(int userId) {
-		this.userId = userId;
+		this.Id = userId;
 	}
 
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+		return "User [userId=" + Id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", address=" + address + ", phone=" + phone + "]";
 	}
 
