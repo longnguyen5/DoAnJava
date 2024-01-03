@@ -32,10 +32,13 @@ public class FilterProductsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		 // Lấy giá trị minPrice và maxPrice từ yêu cầu Ajax
-        int minPrice = Integer.parseInt(request.getParameter("minPrice"));
-        int maxPrice = Integer.parseInt(request.getParameter("maxPrice"));
-        ProductDAO pd = new ProductDAO();
-        List<Product> filteredProducts = pd.getProductByPrice(minPrice, maxPrice);
+		double minPrice = Double.parseDouble(request.getParameter("minPrice"));
+		double maxPrice = Double.parseDouble(request.getParameter("maxPrice"));
+		ProductDAO pd = new ProductDAO();
+		String filteredProductHtml = pd.getFilteredProductHtml(minPrice, maxPrice);
+		response.setContentType("text/html;charset=UTF-8");
+		response.getWriter().write(filteredProductHtml);
+
 	}
 
 	/**

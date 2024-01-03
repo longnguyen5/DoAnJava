@@ -66,7 +66,53 @@
 						</div>
 						<!-- Hiện danh sách sản phẩm -->
 						<div class="row mb-5">
-							<c:forEach var="product" items="${products}">
+							<div id="product-container" class="row" data-aos="fade-up">
+								<!-- Đây là nơi hiển thị sản phẩm, sử dụng id="product-container" -->
+								<c:forEach var="product" items="${products}">
+									<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+										<div class="block-4 text-center border">
+											<figure class="block-4-image">
+												<a
+													href="ProductDetailsServlet?productId=${product.productId}">
+													<img src="${product.imageUrl}" alt="${product.productName}"
+													class="img-fluid">
+												</a>
+											</figure>
+											<div class="block-4-text p-4">
+												<h3>
+													<a
+														href="ProductDetailsServlet?productId=${product.productId}">
+														<script>
+															document
+																	.write("${product.productName}".length > 20 ? "${product.productName}"
+																			.substring(
+																					0,
+																					20)
+																			+ '...'
+																			: "${product.productName}");
+														</script>
+													</a>
+												</h3>
+												<p class="mb-0">
+													<script>
+														document
+																.write("${product.description}".length > 50 ? "${product.description}"
+																		.substring(
+																				0,
+																				50)
+																		+ '...'
+																		: "${product.description}");
+													</script>
+												</p>
+												<p class="text-primary font-weight-bold">${product.price}
+													VNĐ</p>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+
+							<%-- <c:forEach var="product" items="${products}">
 								<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 									<div class="block-4 text-center border">
 										<figure class="block-4-image">
@@ -93,7 +139,7 @@
 										</div>
 									</div>
 								</div>
-							</c:forEach>
+							</c:forEach> --%>
 						</div>
 						<div class="row" data-aos="fade-up">
 							<div class="col-md-12 text-center">
@@ -144,7 +190,7 @@
 								<input type="text" name="text" id="amount"
 									class="form-control border-0 pl-0 bg-white" disabled="" />
 							</div>
-							<a href="#" class="btn btn-sm btn-primary">Áp dụng</a>
+<!-- 							<a href="#" class="btn btn-sm btn-primary" onclick="applyFilter()">Áp dụng</a> -->
 						</div>
 					</div>
 				</div>
@@ -280,7 +326,7 @@
 						type : "GET",
 						success : function(response) {
 							// Hiển thị sản phẩm sau khi lọc
-							$("#filtered-products").html(response);
+							$("#product-container").html(response);
 						},
 						error : function(error) {
 							console.log("Error:", error);
@@ -288,6 +334,28 @@
 					});
 				}
 			});
+			
+/* 			function applyFilter() {
+		        var minPrice = $("#slider-range").slider("values", 0);
+		        var maxPrice = $("#slider-range").slider("values", 1);
+
+		        // Perform Ajax request to send filter values to the servlet
+		        $.ajax({
+		            url: "FilterProductsServlet", // Replace with your servlet URL
+		            data: {
+		                minPrice: minPrice,
+		                maxPrice: maxPrice
+		            },
+		            type: "GET",
+		            success: function (response) {
+		                // Display filtered products in the container
+		                $("#filtered-products-container").html(response);
+		            },
+		            error: function (error) {
+		                console.log("Error:", error);
+		            }
+		        });
+		    } */
 
 			function updateAmountInput(minValue, maxValue) {
 				var formattedMinValue = formatCurrency(minValue);

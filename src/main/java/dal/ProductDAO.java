@@ -372,5 +372,36 @@ public class ProductDAO extends DBContext {
 
 		return 0;
 	}
+	
+    public String getFilteredProductHtml(double minPrice, double maxPrice) {
+        List<Product> filteredProducts = getProductByPrice(minPrice, maxPrice);
+
+        StringBuilder filteredProductHtml = new StringBuilder();
+
+        for (Product product : filteredProducts) {
+            filteredProductHtml.append("<div class=\"col-sm-6 col-lg-4 mb-4\" data-aos=\"fade-up\">");
+            filteredProductHtml.append("<div class=\"block-4 text-center border\">");
+            filteredProductHtml.append("<figure class=\"block-4-image\">");
+            filteredProductHtml.append("<a href=\"ProductDetailsServlet?productId=")
+                    .append(product.getProductId()).append("\"><img src=\"").append(product.getImageUrl())
+                    .append("\" alt=\"").append(product.getProductName()).append("\" class=\"img-fluid\"></a>");
+            filteredProductHtml.append("</figure>");
+            filteredProductHtml.append("<div class=\"block-4-text p-4\">");
+            filteredProductHtml.append("<h3><a href=\"ProductDetailsServlet?productId=")
+                    .append(product.getProductId()).append("\">")
+                    .append(product.getProductName().length() > 20 ?
+                            product.getProductName().substring(0, 20) + "..." : product.getProductName())
+                    .append("</a></h3>");
+            filteredProductHtml.append("<p class=\"mb-0\">")
+                    .append(product.getDescription().length() > 50 ?
+                            product.getDescription().substring(0, 50) + "..." : product.getDescription())
+                    .append("</p>");
+            filteredProductHtml.append("<p class=\"text-primary font-weight-bold\">")
+                    .append(product.getPrice()).append(" VNĐ</p>");
+            filteredProductHtml.append("</div></div></div>");
+        }
+
+        return filteredProductHtml.toString();
+    }
 
 }
