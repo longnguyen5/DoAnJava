@@ -144,7 +144,7 @@
     <servlet-name>RecoverServlet</servlet-name>
     <url-pattern>/RecoverServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>RegisterServlet</display-name>
     <servlet-name>RegisterServlet</servlet-name>
@@ -154,4 +154,22 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManusServlet</display-name>
+    <servlet-name>ManusServlet</servlet-name>
+    <servlet-class>controller.ManusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManusServlet</servlet-name>
+    <url-pattern>/ManusServlet</url-pattern>
+  </servlet-mapping>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/500.html</location>
+	</error-page>
 </web-app>
