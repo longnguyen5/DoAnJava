@@ -56,8 +56,8 @@ public class SubCategoriesServlet extends HttpServlet {
 
 	    // Gửi thông tin đến trang JSP
 	    request.setAttribute("spec", spec);
-	    request.setAttribute("subcategoryId", subcategoryId);
-	    request.setAttribute("subcategories", scd.getSubCategoryById(subcategoryId));
+	   
+	    request.setAttribute("subcategories", scd.getAll());
 	    request.setAttribute("products", list);
 	    request.setAttribute("currentPage", currentPage);
 	    request.setAttribute("totalPages", totalPages);

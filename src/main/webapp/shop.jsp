@@ -129,7 +129,7 @@
 								danh mục</h3>
 							<ul class="list-unstyled mb-0">
 								<c:forEach var="subcategory" items="${subcategories}">
-									<li class="mb-1"><a href="SubCategoriesServlet?subcategoryId=${subcategories.subcategoryId}"
+									<li class="mb-1"><a href="SubCategoriesServlet?subcategoryId=${subcategory.subcategoryId}"
 										class="d-flex"><span>${subcategory.subcategoryName}</span>
 											<span class="text-black ml-auto">(2,124)</span></a></li>
 								</c:forEach>

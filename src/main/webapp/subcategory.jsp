@@ -29,6 +29,8 @@
 				<div class="row">
 					<div class="col-md-12 mb-0">
 						<a href="index.jsp">Trang chủ</a> <span class="mx-2 mb-0">/</span>
+						<strong class="text-black">Danh mục</strong>
+						<span class="mx-2 mb-0">/</span>
 						<strong class="text-black">${c.subcategoryName}</strong>
 					</div>
 				</div>
@@ -130,7 +132,7 @@
 								danh mục</h3>
 							<ul class="list-unstyled mb-0">
 								<c:forEach var="subcategory" items="${subcategories}">
-									<li class="mb-1"><a href="SubCategoriesServlet?subcategoryId=${subcategories.subcategoryId}"
+									<li class="mb-1"><a href="SubCategoriesServlet?subcategoryId=${subcategory.subcategoryId}"
 										class="d-flex"><span>${subcategory.subcategoryName}</span>
 											<span class="text-black ml-auto">(2,124)</span></a></li>
 								</c:forEach>

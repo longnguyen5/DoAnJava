@@ -311,7 +311,7 @@ public class ProductDAO extends DBContext {
 		int offset = (currentPage - 1) * pageSize;
 		List<Product> list = new ArrayList<>();
 		// Sử dụng offset và pageSize trong truy vấn SQL
-		String query = "SELECT * FROM products WHERE subcategory_id = ? LIMIT ?, ?";
+		String query = "SELECT * FROM `products` WHERE `subcategoryId` = ? LIMIT ?, ?";
 
 		try {
 			PreparedStatement preparedStatement;
