@@ -114,4 +114,14 @@
     <servlet-name>SubCategoriesServlet</servlet-name>
     <url-pattern>/SubCategoriesServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProductSearchServlet</display-name>
+    <servlet-name>ProductSearchServlet</servlet-name>
+    <servlet-class>controller.ProductSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductSearchServlet</servlet-name>
+    <url-pattern>/ProductSearchServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

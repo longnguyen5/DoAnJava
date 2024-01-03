@@ -147,7 +147,7 @@
 								<input type="text" name="text" id="amount"
 									class="form-control border-0 pl-0 bg-white" disabled="" />
 							</div>
-							<a href="#" class="btn btn-sm btn-primary">Áp dụng</a>
+<!-- 							<a href="#" class="btn btn-sm btn-primary">Áp dụng</a> -->
 						</div>
 					</div>
 				</div>
@@ -283,7 +283,7 @@
 						type : "GET",
 						success : function(response) {
 							// Hiển thị sản phẩm sau khi lọc
-							$("#filtered-products").html(response);
+							$("#product-container").html(response);
 						},
 						error : function(error) {
 							console.log("Error:", error);
@@ -291,6 +291,28 @@
 					});
 				}
 			});
+			
+/* 			function applyFilter() {
+		        var minPrice = $("#slider-range").slider("values", 0);
+		        var maxPrice = $("#slider-range").slider("values", 1);
+
+		        // Perform Ajax request to send filter values to the servlet
+		        $.ajax({
+		            url: "FilterProductsServlet", // Replace with your servlet URL
+		            data: {
+		                minPrice: minPrice,
+		                maxPrice: maxPrice
+		            },
+		            type: "GET",
+		            success: function (response) {
+		                // Display filtered products in the container
+		                $("#filtered-products-container").html(response);
+		            },
+		            error: function (error) {
+		                console.log("Error:", error);
+		            }
+		        });
+		    } */
 
 			function updateAmountInput(minValue, maxValue) {
 				var formattedMinValue = formatCurrency(minValue);
