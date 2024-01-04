@@ -41,7 +41,7 @@
 						<h2 class="display-3 text-black">Cảm ơn!</h2>
 						<p class="lead mb-5">Đơn đặt hàng của bạn đã hoàn thành.</p>
 						<p>
-							<a href="shop.jsp" class="btn btn-sm btn-primary">Back to
+							<a href="ProductServlet" class="btn btn-sm btn-primary">Back to
 								shop</a>
 						</p>
 					</div>

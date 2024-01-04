@@ -74,7 +74,7 @@ if (categories == null) {
 		role="navigation">
 		<div class="container">
 			<ul class="site-menu js-clone-nav d-none d-md-block">
-				<li class=""><a href="index.jsp">Trang chủ</a></li>
+				<li class=""><a href="HeaderServlet">Trang chủ</a></li>
 				<!-- Sử dụng EL để lặp qua danh sách categories -->
 				<c:forEach var="category" items="${sessionScope.categories}">
 					<c:if test="${category.status == 1}">
