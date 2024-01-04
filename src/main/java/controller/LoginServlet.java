@@ -55,11 +55,11 @@ public class LoginServlet extends HttpServlet {
             if (role == 0) {
                 HttpSession session = request.getSession();
                 session.setAttribute("account", a);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("CategoryServlet");
             } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("account", a);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("HeaderServlet");
             }
         }
     }

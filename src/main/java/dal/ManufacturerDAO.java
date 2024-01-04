@@ -12,7 +12,7 @@ public class ManufacturerDAO extends DBContext {
     public List<Manufacturer> getAllManufacturer() {
         List<Manufacturer> list = new ArrayList<>();
         try {
-            String sSql = "select * from `manufacturer`";
+            String sSql = "select * from `manufacturers`";
             PreparedStatement ps = connection.prepareStatement(sSql);
             ResultSet rs = ps.executeQuery();
 
@@ -32,7 +32,7 @@ public class ManufacturerDAO extends DBContext {
 
     public Manufacturer getManufacturerById(int id) {
         try {
-            String sSql = "select * from `manufacturer` where `id` = ?";
+            String sSql = "select * from `manufacturers` where `manufacturerId` = ?";
             PreparedStatement ps = connection.prepareStatement(sSql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

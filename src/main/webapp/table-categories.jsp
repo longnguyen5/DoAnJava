@@ -42,7 +42,7 @@
 			<i
 				class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
 				aria-hidden="true" id="iconSidenav"></i> <a class="navbar-brand m-0"
-				href="#"
+				href="index.jsp"
 				target="_blank"> <span class="ms-1 font-weight-bold">Quản
 					lý hệ thống</span>
 			</a>
@@ -83,7 +83,7 @@
 						</div> <span class="nav-link-text ms-1">Quản lý nhân viên</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link  "
-					href="table-manus.jsp">
+					href="ManusServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 							<svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -167,7 +167,7 @@
 						<div class="card-body px-0 pt-0 pb-2">
 								<p align="center"><a href="addCategory.jsp"
 													class="text-secondary font-weight-bold text-xs"
-													data-toggle="tooltip" data-original-title="Delete category">
+													data-toggle="tooltip" data-original-title="Add category">
 														Thêm mới </a></p>
 							<div class="table-responsive p-0">
 								<table class="table align-items-center mb-0">

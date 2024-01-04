@@ -32,19 +32,18 @@
 	<div class="site-wrap">
 
 		<%@ include file="header.jsp"%>
+		<c:set value = "${cover}" var = "c"/>
 		<div class="site-blocks-cover"
-			style="background-image: url(images/sitecover.png);" data-aos="fade">
+			style="background-image: url(${c.link});" data-aos="fade">
 			<div class="container">
 				<div
 					class="row align-items-start align-items-md-center justify-content-end">
 					<div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-						<h1 class="mb-2">Tìm sản phẩm phù hợp với bạn</h1>
+						<h1 class="mb-2">${c.coverName}</h1>
 						<div class="intro-text text-center text-md-left">
-							<p class="mb-4">“Sức khỏe là một trạng thái tâm trí, thể chất
-								và xã hội hoàn hảo, không chỉ là sự vắng mặt của bệnh hoặc yếu
-								tố bất lợi” - World Health Organization.</p>
+							<p class="mb-4">${c.description}</p>
 							<p>
-								<a href="#" class="btn btn-sm btn-primary">Shop ngay</a>
+								<a href="ProductServlet" class="btn btn-sm btn-primary">Shop ngay</a>
 							</p>
 						</div>
 					</div>

@@ -164,12 +164,42 @@
     <servlet-name>ManusServlet</servlet-name>
     <url-pattern>/ManusServlet</url-pattern>
   </servlet-mapping>
-	<error-page>
-		<error-code>404</error-code>
-		<location>/404.html</location>
-	</error-page>
-	<error-page>
-		<error-code>500</error-code>
-		<location>/500.html</location>
-	</error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.html</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/500.html</location>
+  </error-page>
+  <servlet>
+    <description></description>
+    <display-name>UpdateManuServlet</display-name>
+    <servlet-name>UpdateManuServlet</servlet-name>
+    <servlet-class>controller.UpdateManuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateManuServlet</servlet-name>
+    <url-pattern>/UpdateManuServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddManuServlet</display-name>
+    <servlet-name>AddManuServlet</servlet-name>
+    <servlet-class>controller.AddManuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddManuServlet</servlet-name>
+    <url-pattern>/AddManuServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteManuServlet</display-name>
+    <servlet-name>DeleteManuServlet</servlet-name>
+    <servlet-class>controller.DeleteManuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteManuServlet</servlet-name>
+    <url-pattern>/DeleteManuServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
