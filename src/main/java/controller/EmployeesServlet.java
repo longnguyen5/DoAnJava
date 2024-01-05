@@ -5,24 +5,24 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Category;
-import model.Manufacturer;
+import model.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import dal.CategoryDAO;
-import dal.ManufacturerDAO;
+import dal.UserDAO;
 
 /**
- * Servlet implementation class UpdateManuServlet
+ * Servlet implementation class EmployeesServlet
  */
-public class UpdateManuServlet extends HttpServlet {
+public class EmployeesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateManuServlet() {
+    public EmployeesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +32,10 @@ public class UpdateManuServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id_s = request.getParameter("manufacturerId");
-		int id = Integer.parseInt(id_s);
-		ManufacturerDAO cd = new ManufacturerDAO();
-		Manufacturer c = cd.getManufacturerById(id);
-		request.setAttribute("manufacturer", c);
-		request.getRequestDispatcher("updateManufacturer.jsp").forward(request, response);
+		UserDAO ud = new UserDAO();
+		List<User> list = ud.getAllUser();
+		request.setAttribute("data", list);
+		request.getRequestDispatcher("table-employees.jsp").forward(request, response);
 	}
 
 	/**
@@ -45,18 +43,7 @@ public class UpdateManuServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id_S = request.getParameter("manufacturerId");
-		String name = request.getParameter("manufacturerName");
-		String link = request.getParameter("address"); 
-		String status = request.getParameter("phoneNumber");
-
-		int id = Integer.parseInt(id_S);
-
-		ManufacturerDAO cd = new ManufacturerDAO();
-		Manufacturer c = new Manufacturer(id, name, link, status);
-		
-		cd.update(c);
-		response.sendRedirect("ManusServlet");
+		doGet(request, response);
 	}
 
 }

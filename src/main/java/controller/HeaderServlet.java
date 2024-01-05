@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.Account;
 import model.Cover;
 import model.SubCategory;
 
@@ -35,7 +37,10 @@ public class HeaderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-        // Lấy danh sách categories từ database
+		HttpSession session = request.getSession();
+		Account account = (Account)session.getAttribute("account");
+		
+		// Lấy danh sách categories từ database
         CategoryDAO cd = new CategoryDAO();
         List<model.Category> categories = cd.getAllCategory();
         
@@ -43,6 +48,8 @@ public class HeaderServlet extends HttpServlet {
         Cover c = cadao.getCoverbyStatus();
         
         request.setAttribute("cover", c);
+        
+        request.setAttribute("account", account);
 
         // Lưu danh sách vào Session
         request.getSession().setAttribute("categories", categories);

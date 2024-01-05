@@ -53,7 +53,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link " href="table-employees.jsp">
+					<a class="nav-link " href="EmployeesServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -149,6 +149,9 @@
 								<table class="table align-items-center mb-0">
 									<thead>
 										<tr>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+												Tên </th>
 											<th
 												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 												Tên nhân viên</th>
@@ -338,10 +341,10 @@
 	
 	</div>
 	<!--   Core JS Files   -->
-	<script src="../assets/js/core/popper.min.js"></script>
-	<script src="../assets/js/core/bootstrap.min.js"></script>
-	<script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-	<script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+	<script src="./js/popper.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/perfect-scrollbar.min.js"></script>
+	<script src="./js/smooth-scrollbar.min.js"></script>
 	<script>
 		var win = navigator.platform.indexOf('Win') > -1;
 		if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -354,7 +357,7 @@
 	<!-- Github buttons -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-	<script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+	<script src="./js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 </body>
 
 </html>

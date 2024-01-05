@@ -67,7 +67,7 @@
 						</div> <span class="nav-link-text ms-1">Quản lý danh mục</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link  "
-					href="table-employees.jsp">
+					href="EmployeesServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -167,7 +167,15 @@
 						<div class="card-body px-0 pt-0 pb-2">
 								<p align="center"><a href="addCategory.jsp"
 													class="text-secondary font-weight-bold text-xs"
-													data-toggle="tooltip" data-original-title="Add category">
+													data-toggle="tooltip" data-original-title="Add category"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+  <title>square-plus</title>
+  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#ffffff"></rect>
+  <g fill="#8392be" stroke="#8392be">
+    <rect x="2.75" y="2.75" width="12.5" height="12.5" rx="2" ry="2" fill="none" stroke="#8392be" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></rect>
+    <line x1="5.75" y1="9" x2="12.25" y2="9" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></line>
+    <line x1="9" y1="5.75" x2="9" y2="12.25" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></line>
+  </g>
+</svg>
 														Thêm mới </a></p>
 							<div class="table-responsive p-0">
 								<table class="table align-items-center mb-0">
@@ -205,10 +213,23 @@
 												<td class="align-middle"><a href="UpdateCategoryServlet?categoryId=${category.categoryId}"
 													class="text-secondary font-weight-bold text-xs"
 													data-toggle="tooltip" data-original-title="Edit category">
-														Sửa </a> <a href="#"
+														<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+  <title>pen-3</title>
+  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#ffffff"></rect>
+  <g fill="#8db762">
+    <path d="M15.152,2.848c-.998-.998-2.74-.997-3.738,0L3.605,10.657c-.863,.864-1.401,3.406-1.593,4.459-.044,.242,.034,.491,.208,.665,.142,.142,.333,.22,.53,.22,.044,0,.089-.004,.134-.012,1.053-.191,3.595-.729,4.459-1.593l5.495-5.495,.217,.217c.487,.487,.487,1.28,0,1.768l-1.586,1.586c-.293,.293-.293,.768,0,1.061,.146,.146,.338,.22,.53,.22s.384-.073,.53-.22l1.586-1.586c1.072-1.072,1.072-2.816,0-3.889l-.217-.217,1.253-1.253c1.03-1.031,1.03-2.707,0-3.738Zm-1.061,2.677l-1.253,1.253-1.617-1.617,1.253-1.253c.216-.216,.503-.334,.809-.334s.592,.119,.808,.334c.445,.446,.445,1.171,0,1.617Z" fill="#8db762"></path>
+  </g>
+</svg></a> <a href="#"
 													class="text-secondary font-weight-bold text-xs"
 													data-toggle="tooltip" data-original-title="Delete category" onclick="doDelete('${category.categoryId}')">
-														Xóa </a></td>
+														<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+  <title>trash</title>
+  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#ffffff"></rect>
+  <g fill="#ff5f53">
+    <path d="M15.25,3.5h-3.25v-.75c0-.965-.785-1.75-1.75-1.75h-2.5c-.965,0-1.75,.785-1.75,1.75v.75H2.75c-.414,0-.75,.336-.75,.75s.336,.75,.75,.75H15.25c.414,0,.75-.336,.75-.75s-.336-.75-.75-.75Zm-7.75-.75c0-.138,.112-.25,.25-.25h2.5c.138,0,.25,.112,.25,.25v.75h-3v-.75Z"></path>
+    <path d="M13.5,6H4.5c-.206,0-.402,.084-.544,.234s-.216,.35-.205,.556l.4,7.604c.077,1.461,1.283,2.606,2.746,2.606h4.205c1.463,0,2.669-1.145,2.746-2.605l.4-7.605c.011-.206-.063-.406-.205-.556s-.338-.234-.544-.234Z" fill="#ff5f53"></path>
+  </g>
+</svg> </a></td>
 											</tr>
 										</c:forEach>
 
@@ -224,10 +245,10 @@
 
 	</div>
 	<!--   Core JS Files   -->
-	<script src="../assets/js/core/popper.min.js"></script>
-	<script src="../assets/js/core/bootstrap.min.js"></script>
-	<script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-	<script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+	<script src="./js/popper.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/perfect-scrollbar.min.js"></script>
+	<script src="./js/smooth-scrollbar.min.js"></script>
 	<script>
 		var win = navigator.platform.indexOf('Win') > -1;
 		if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -241,7 +262,7 @@
 	<!-- Github buttons -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-	<script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+	<script src="./js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 </body>
 
 </html>

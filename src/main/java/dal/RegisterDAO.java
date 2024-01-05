@@ -52,8 +52,8 @@ public class RegisterDAO extends DBContext {
                 if (generatedKeys.next()) {
                     int accountId = generatedKeys.getInt(1);
 
-                    userStatement.setString(1, user.getFirstName());
-                    userStatement.setString(2, user.getLastName());
+                    userStatement.setString(1, user.getFirstname());
+                    userStatement.setString(2, user.getLastname());
                     userStatement.setString(3, user.getEmail());
                     userStatement.setString(4, user.getAddress());
                     userStatement.setString(5, user.getPhone());

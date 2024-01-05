@@ -2,11 +2,55 @@ package model;
 
 public class User {
 	private int Id;
+	private String firstname;
+	private String lastname;
 	private String email;
-	private String firstName;
-	private String lastName;
     private String address;
     private String phone;
+    
+	public User() {
+	}
+
+	public User(int id, String firstname, String lastname, String email, String address, String phone) {
+		this.Id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.address = address;
+		this.phone = phone;
+	}
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getAddress() {
 		return address;
@@ -24,56 +68,10 @@ public class User {
 		this.phone = phone;
 	}
 
-	public User() {
-	}
-
-
-	public int getUserId() {
-		return Id;
-	}
-
-	public User(int userId, String email, String firstName, String lastName, String address, String phone) {
-
-		this.Id = userId;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.phone = phone;
-	}
-
-	public void setUserId(int userId) {
-		this.Id = userId;
-	}
-
-
 	@Override
 	public String toString() {
-		return "User [userId=" + Id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+		return "User [Id=" + Id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
 				+ ", address=" + address + ", phone=" + phone + "]";
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
 }

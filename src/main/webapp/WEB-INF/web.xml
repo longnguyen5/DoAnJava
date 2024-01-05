@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
   <display-name>DoAnJava</display-name>
   <welcome-file-list>
-    <welcome-file>login.html</welcome-file>
+    <welcome-file>HeaderServlet</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -201,5 +201,25 @@
   <servlet-mapping>
     <servlet-name>DeleteManuServlet</servlet-name>
     <url-pattern>/DeleteManuServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CartServlet</display-name>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>controller.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/CartServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeesServlet</display-name>
+    <servlet-name>EmployeesServlet</servlet-name>
+    <servlet-class>controller.EmployeesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeesServlet</servlet-name>
+    <url-pattern>/EmployeesServlet</url-pattern>
   </servlet-mapping>
 </web-app>
