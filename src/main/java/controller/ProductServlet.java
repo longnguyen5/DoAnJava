@@ -3,9 +3,12 @@ package controller;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Cart;
+import model.Item;
 import model.Product;
 import model.SubCategory;
 
@@ -38,14 +41,14 @@ public class ProductServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// Khởi tạo đối tượng ProductDAO
 		ProductDAO productDAO = new ProductDAO();
-
+		
 		// Xác định trang hiện tại
 		int currentPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
 		int pageSize = 12; // Số lượng sản phẩm trên mỗi trang
 
 		// Lấy tất cả sản phẩm
 		List<Product> products = productDAO.getProducts(currentPage, pageSize);
-
+		
 		int totalProducts = productDAO.getTotalProducts();
 
 		// Xác định tổng số trang

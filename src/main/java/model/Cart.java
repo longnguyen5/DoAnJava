@@ -50,23 +50,27 @@ public class Cart {
 	
 	public Cart(String txt, List<Product> list) {
 		items = new ArrayList<>();
-		try {
-			if(txt != null && txt.length()!= 0) {
-				String [] s = txt.split(",");
-				for (String i:s) {
-					String [] n = i.split(":");
-					int id = Integer.parseInt(n[0]);
-					int quantity = Integer.parseInt(n[1]);
-					Product p = getProductById(id, list);
-					Item t = new Item(p, quantity, p.getPrice());
-					addItem(t);
-				}
-			}
-		}catch(NumberFormatException e) {
-			
-		}
-		
+	    try {
+	        if (txt != null && !txt.isEmpty() && list != null && !list.isEmpty()) {
+	            String[] s = txt.split(",");
+	            for (String i : s) {
+	                String[] n = i.split(":");
+	                if (n.length == 2) {
+	                    int id = Integer.parseInt(n[0].trim());
+	                    int quantity = Integer.parseInt(n[1].trim());
+	                    Product p = getProductById(id, list);
+	                    if (p != null) {
+	                        Item t = new Item(p, quantity, p.getPrice());
+	                        addItem(t);
+	                    }
+	                }
+	            }
+	        }
+	    } catch (NumberFormatException e) {
+	        e.printStackTrace(); // In lỗi để theo dõi khi có lỗi chuyển đổi số
+	    }
 	}
+
 
 	private Product getProductById(int id, List<Product> list) {
 		for (Product i:list) {

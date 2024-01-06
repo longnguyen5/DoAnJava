@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Cart;
+import model.Item;
 import model.Product;
 
 import java.io.IOException;
@@ -40,37 +41,63 @@ public class BuyServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		ProductDAO d = new ProductDAO();
-//		List<Product> list = d.getAll();
-		Cookie[] arr = request.getCookies();
-		String txt = "";
+	    // TODO Auto-generated method stub
 	    String productId = request.getParameter("productId");
 	    String quantity = request.getParameter("quantity");
 
-	    if (arr != null) {
-	        for (Cookie o : arr) {
-	            if (o.getName().equals("cart")) {
-	                txt += o.getValue();
-	                o.setMaxAge(0);
-	                response.addCookie(o);
-	        	    }
+	    Cookie[] cookies = request.getCookies();
+	    Cookie cartCookie = null;
+
+	    // Tìm cookie giỏ hàng hiện tại
+	    if (cookies != null) {
+	        for (Cookie cookie : cookies) {
+	            if (cookie.getName().equals("cart")) {
+	                cartCookie = cookie;
+	                break;
 	            }
 	        }
-	    
-	    if (txt.isEmpty()) {
-	        txt = productId + ":" + quantity;
-	    } else {
-	        txt = txt + "," + productId + ":" + quantity;
-	
 	    }
-	
-	    Cookie c = new Cookie("cart", txt);
-	    c.setMaxAge(24*60*60);
-	    response.addCookie(c);
-	    
-//	    request.getRequestDispatcher("shop-single.jsp");
-//	    response.sendRedirect("shop-single.jsp");
+
+	    // Xử lý giá trị cookie giỏ hàng
+	    if (cartCookie == null) {
+	        // Nếu không có giỏ hàng, tạo cookie mới
+	        cartCookie = new Cookie("cart", productId + ":" + quantity);
+	    } else {
+	        // Nếu đã có giỏ hàng, cập nhật giá trị cookie
+	        String cartValue = cartCookie.getValue();
+	        String[] items = cartValue.split(",");
+	        boolean productExists = false;
+
+	        for (int i = 0; i < items.length; i++) {
+	            String[] itemInfo = items[i].split(":");
+	            if (itemInfo[0].equals(productId)) {
+	                // Sản phẩm đã có trong giỏ hàng, tăng số lượng
+	                int newQuantity = Integer.parseInt(itemInfo[1]) + Integer.parseInt(quantity);
+	                items[i] = productId + ":" + newQuantity;
+	                System.out.println(items[i]);
+	                productExists = true;
+	                break;
+	            }
+	        }
+
+	        if (!productExists) {
+	            // Sản phẩm mới, thêm vào danh sách
+	            cartValue += "," + productId + ":" + quantity;
+	        }
+
+	        // Đặt giá trị mới cho cookie
+	        cartCookie.setValue(cartValue);
+	        System.out.println(cartValue);
+	    }
+
+	    // Thiết lập thời gian sống của cookie (ví dụ: 1 ngày)
+	    cartCookie.setMaxAge(24 * 60 * 60);
+
+	    // Thêm hoặc cập nhật cookie vào phản hồi
+	    response.addCookie(cartCookie);
+
+//	    // Chuyển hướng đến trang chi tiết sản phẩm
+//	    response.sendRedirect("ProductDetailsServlet?productId=" + productId);
 	}
 
 }
