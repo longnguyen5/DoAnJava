@@ -91,7 +91,7 @@
 												${i.product.price*i.quantity }
 											</td>
 											<td>
-												<form action="" method="post">
+												<form action="RemoveItemsServlet" method="post">
 													<input type="hidden" name = "id" value="${i.product.productId }"/>	
 															
 													<input type="submit" value="return item"/>

@@ -288,4 +288,14 @@
     <servlet-name>fdd</servlet-name>
     <url-pattern>/fdd</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveItemsServlet</display-name>
+    <servlet-name>RemoveItemsServlet</servlet-name>
+    <servlet-class>controller.RemoveItemsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveItemsServlet</servlet-name>
+    <url-pattern>/RemoveItemsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
