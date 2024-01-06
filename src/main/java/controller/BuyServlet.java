@@ -11,6 +11,8 @@ import model.Item;
 import model.Product;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 import dal.ProductDAO;
@@ -34,15 +36,14 @@ public class BuyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    // TODO Auto-generated method stub
-	    String productId = request.getParameter("productId");
+		String productId = request.getParameter("productId");
 	    String quantity = request.getParameter("quantity");
 
 	    Cookie[] cookies = request.getCookies();
@@ -61,16 +62,16 @@ public class BuyServlet extends HttpServlet {
 	    // Xử lý giá trị cookie giỏ hàng
 	    if (cartCookie == null) {
 	        // Nếu không có giỏ hàng, tạo cookie mới
-	        cartCookie = new Cookie("cart", productId + ":" + quantity);
+	        cartCookie = new Cookie("cart", URLEncoder.encode(productId + ":" + quantity, "UTF-8"));
 	    } else {
 	        // Nếu đã có giỏ hàng, cập nhật giá trị cookie
-	        String cartValue = cartCookie.getValue();
+	        String cartValue = URLDecoder.decode(cartCookie.getValue(), "UTF-8");
 	        String[] items = cartValue.split(",");
 	        boolean productExists = false;
 
 	        for (int i = 0; i < items.length; i++) {
 	            String[] itemInfo = items[i].split(":");
-	            if (itemInfo[0].equals(productId)) {
+	            if (itemInfo.length >= 2 && itemInfo[0].equals(productId)) {
 	                // Sản phẩm đã có trong giỏ hàng, tăng số lượng
 	                int newQuantity = Integer.parseInt(itemInfo[1]) + Integer.parseInt(quantity);
 	                items[i] = productId + ":" + newQuantity;
@@ -80,24 +81,25 @@ public class BuyServlet extends HttpServlet {
 	            }
 	        }
 
+
 	        if (!productExists) {
 	            // Sản phẩm mới, thêm vào danh sách
 	            cartValue += "," + productId + ":" + quantity;
 	        }
 
 	        // Đặt giá trị mới cho cookie
-	        cartCookie.setValue(cartValue);
+	        cartCookie.setValue(URLEncoder.encode(cartValue, "UTF-8"));
 	        System.out.println(cartValue);
 	    }
 
 	    // Thiết lập thời gian sống của cookie (ví dụ: 1 ngày)
-	    cartCookie.setMaxAge(24 * 60 * 60);
+	    cartCookie.setMaxAge(2 * 24 * 60 * 60);
 
 	    // Thêm hoặc cập nhật cookie vào phản hồi
 	    response.addCookie(cartCookie);
 
-//	    // Chuyển hướng đến trang chi tiết sản phẩm
-//	    response.sendRedirect("ProductDetailsServlet?productId=" + productId);
+	    // Chuyển hướng đến trang chi tiết sản phẩm
+	    response.sendRedirect("ProductDetailsServlet?productId=" + productId);
 	}
 
 }

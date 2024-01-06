@@ -10,6 +10,7 @@ import model.Cart;
 import model.Product;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import dal.ProductDAO;
@@ -37,13 +38,15 @@ public class CartServlet extends HttpServlet {
 		List<Product> list = pd.getAll();
 		Cookie[] arr = request.getCookies();
 		String txt = "";
-		if (arr!=null) {
-			for(Cookie o : arr) {
-				if(o.getName().equals("cart")) {
-					txt+=o.getValue();
-				}
-			}
+
+		if (arr != null) {
+		    for (Cookie o : arr) {
+		        if (o.getName().equals("cart")) {
+		            txt += URLDecoder.decode(o.getValue(), "UTF-8");
+		        }
+		    }
 		}
+
 		Cart cart = new Cart(txt, list);
 		request.setAttribute("cart", cart);
 		request.getRequestDispatcher("cart.jsp").forward(request, response);

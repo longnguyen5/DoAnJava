@@ -168,10 +168,6 @@
     <error-code>404</error-code>
     <location>/404.html</location>
   </error-page>
-<!--   <error-page>
-    <error-code>500</error-code>
-    <location>/500.html</location>
-  </error-page> -->
   <servlet>
     <description></description>
     <display-name>UpdateManuServlet</display-name>
@@ -281,5 +277,15 @@
   <servlet-mapping>
     <servlet-name>BuyServlet</servlet-name>
     <url-pattern>/BuyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>fdd</display-name>
+    <servlet-name>fdd</servlet-name>
+    <servlet-class>controller.fdd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fdd</servlet-name>
+    <url-pattern>/fdd</url-pattern>
   </servlet-mapping>
 </web-app>
