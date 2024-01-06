@@ -129,6 +129,18 @@ public class CoverDAO extends DBContext{
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateOther(int id) {
+		String sql = "update `covers` set status = 0 where coverId != ?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
 
 

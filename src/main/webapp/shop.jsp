@@ -50,14 +50,20 @@
 										<div class="btn-group">
 											<button type="button"
 												class="btn btn-secondary btn-sm dropdown-toggle"
-												id="dropdownMenuReference" data-toggle="dropdown">Sắp xếp theo</button>
+												id="dropdownMenuReference" data-toggle="dropdown">Sắp
+												xếp theo</button>
 											<div class="dropdown-menu"
 												aria-labelledby="dropdownMenuReference">
-												<a class="dropdown-item" href="#">Tên, từ A đến Z</a> <a
-													class="dropdown-item" href="#">Tên, từ Z đến A</a>
+												<a class="dropdown-item sort-option"
+													data-sort-type="name-asc" href="#">Tên, từ A đến Z</a> <a
+													class="dropdown-item sort-option"
+													data-sort-type="name-desc" href="#">Tên, từ Z đến A</a>
 												<div class="dropdown-divider"></div>
-												<a class="dropdown-item" href="#">Giá, từ thấp đến cao</a> <a
-													class="dropdown-item" href="#">Giá, từ cao đến thấp</a>
+												<a class="dropdown-item sort-option"
+													data-sort-type="price-asc" href="#">Giá, từ thấp đến
+													cao</a> <a class="dropdown-item sort-option"
+													data-sort-type="price-desc" href="#">Giá, từ cao đến
+													thấp</a>
 											</div>
 										</div>
 									</div>
@@ -111,35 +117,6 @@
 									</div>
 								</c:forEach>
 							</div>
-
-							<%-- <c:forEach var="product" items="${products}">
-								<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-									<div class="block-4 text-center border">
-										<figure class="block-4-image">
-											<a
-												href="ProductDetailsServlet?productId=${product.productId}"><img
-												src="${product.imageUrl}" alt="${product.productName}"
-												class="img-fluid"></a>
-										</figure>
-										<div class="block-4-text p-4">
-											<h3>
-												<a href="ProductDetailsServlet?productId=${product.productId}">            
-													<script>
-                										document.write("${product.productName}".length > 20 ? "${product.productName}".substring(0, 20) + '...' : "${product.productName}");
-            										</script>
-            									</a>
-											</h3>
-											<p class="mb-0">
-												<script>
-            											document.write("${product.description}".length > 50 ? "${product.description}".substring(0, 50) + '...' : "${product.description}");
-        										</script>
-											</p>
-											<p class="text-primary font-weight-bold">${product.price}
-												VNĐ</p>
-										</div>
-									</div>
-								</div>
-							</c:forEach> --%>
 						</div>
 						<div class="row" data-aos="fade-up">
 							<div class="col-md-12 text-center">
@@ -175,7 +152,8 @@
 								danh mục</h3>
 							<ul class="list-unstyled mb-0">
 								<c:forEach var="subcategory" items="${subcategories}">
-									<li class="mb-1"><a href="SubCategoriesServlet?subcategoryId=${subcategory.subcategoryId}"
+									<li class="mb-1"><a
+										href="SubCategoriesServlet?subcategoryId=${subcategory.subcategoryId}"
 										class="d-flex"><span>${subcategory.subcategoryName}</span>
 											<span class="text-black ml-auto">(2,124)</span></a></li>
 								</c:forEach>
@@ -190,7 +168,7 @@
 								<input type="text" name="text" id="amount"
 									class="form-control border-0 pl-0 bg-white" disabled="" />
 							</div>
-<!-- 							<a href="#" class="btn btn-sm btn-primary" onclick="applyFilter()">Áp dụng</a> -->
+							<!-- 							<a href="#" class="btn btn-sm btn-primary" onclick="applyFilter()">Áp dụng</a> -->
 						</div>
 					</div>
 				</div>
@@ -249,28 +227,6 @@
 					});
 				}
 			});
-			
-/* 			function applyFilter() {
-		        var minPrice = $("#slider-range").slider("values", 0);
-		        var maxPrice = $("#slider-range").slider("values", 1);
-
-		        // Perform Ajax request to send filter values to the servlet
-		        $.ajax({
-		            url: "FilterProductsServlet", // Replace with your servlet URL
-		            data: {
-		                minPrice: minPrice,
-		                maxPrice: maxPrice
-		            },
-		            type: "GET",
-		            success: function (response) {
-		                // Display filtered products in the container
-		                $("#filtered-products-container").html(response);
-		            },
-		            error: function (error) {
-		                console.log("Error:", error);
-		            }
-		        });
-		    } */
 
 			function updateAmountInput(minValue, maxValue) {
 				var formattedMinValue = formatCurrency(minValue);
@@ -295,5 +251,28 @@
 		});
 	</script>
 
+<script>
+$(document).on("click", ".sort-option", function(e) {
+	   e.preventDefault();
+	   
+	   var sortType = $(this).data("sort-type");
+
+	   // Sử dụng Ajax để gửi yêu cầu đến Servlet
+	   $.ajax({
+	      url: "SortServlet", // Đường dẫn tới Servlet
+	      data: {
+	         sortType: sortType
+	      },
+	      type: "GET",
+	      success: function(response) {
+	         // Hiển thị sản phẩm sau khi sắp xếp
+	         $("#product-container").html(response);
+	      },
+	      error: function(error) {
+	         console.log("Error:", error);
+	      }
+	   });
+	});
+</script>
 </body>
 </html>

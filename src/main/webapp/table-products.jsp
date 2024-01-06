@@ -111,6 +111,19 @@
 </svg>
 						</div> <span class="nav-link-text ms-1">Quản lý sản phẩm</span>
 				</a></li>
+				<li class="nav-item"><a class="nav-link  "
+					href="CoverServlet">
+						<div
+							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+  <title>sparkle-3</title>
+  <g fill="#3a416f">
+    <path d="M3.025,5.623c.068,.204,.26,.342,.475,.342s.406-.138,.475-.342l.421-1.263,1.263-.421c.204-.068,.342-.259,.342-.474s-.138-.406-.342-.474l-1.263-.421-.421-1.263c-.137-.408-.812-.408-.949,0l-.421,1.263-1.263,.421c-.204,.068-.342,.259-.342,.474s.138,.406,.342,.474l1.263,.421,.421,1.263Z"></path>
+    <path d="M16.525,8.803l-4.535-1.793-1.793-4.535c-.227-.572-1.168-.572-1.395,0l-1.793,4.535-4.535,1.793c-.286,.113-.475,.39-.475,.697s.188,.584,.475,.697l4.535,1.793,1.793,4.535c.113,.286,.39,.474,.697,.474s.584-.188,.697-.474l1.793-4.535,4.535-1.793c.286-.113,.475-.39,.475-.697s-.188-.584-.475-.697Z" fill="#3a416f"></path>
+  </g>
+</svg>
+						</div> <span class="nav-link-text ms-1">Site Cover</span>
+				</a></li>
 	</aside>
 	<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
 		<!-- Navbar -->
@@ -152,9 +165,7 @@
 											<th
 												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 												Tên </th>
-											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-												Tên nhân viên</th>
+											
 											<th
 												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
 												Vai trò</th>

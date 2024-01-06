@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +25,9 @@
 	rel="stylesheet" />
 
 <script type="text/javascript">
-	function doDelete(categoryId) {
-		if (confirm("Bạn có chắc chắn xóa Danh mục với ID = " + categoryId)) {
-			window.location = "DeleteCategoryServlet?categoryId=" + categoryId;
+	function doDelete(coverId) {
+		if (confirm("Bạn có chắc chắn xóa Cover với ID = " + coverId)) {
+			window.location = "DeleteCoverServlet?coverId=" + coverId;
 		}
 	}
 </script>
@@ -51,15 +51,15 @@
 		<div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100"
 			id="sidenav-collapse-main">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link  active"
+				<li class="nav-item"><a class="nav-link  "
 					href="CategoryServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
   <title>layers-3</title>
-  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#cb0c9f"></rect>
-  <g fill="#ffffff">
-    <path d="M15.685,4.423L9.816,1.333c-.511-.271-1.121-.27-1.631,0L2.315,4.423c-.494,.26-.801,.769-.801,1.327s.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327s-.307-1.067-.801-1.327Z" fill="#ffffff"></path>
+  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#ffff"></rect>
+  <g fill="#3a416f">
+    <path d="M15.685,4.423L9.816,1.333c-.511-.271-1.121-.27-1.631,0L2.315,4.423c-.494,.26-.801,.769-.801,1.327s.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327s-.307-1.067-.801-1.327Z" fill="#3a416f"></path>
     <path d="M15.736,8.25c-.414,0-.75,.336-.75,.75l-5.87,3.091c-.072,.038-.158,.038-.232,0l-5.87-3.091c0-.414-.336-.75-.75-.75s-.75,.336-.75,.75c0,.559,.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327,0-.414-.336-.75-.75-.75Z"></path>
     <path d="M15.736,11.5c-.414,0-.75,.336-.75,.75l-5.87,3.091c-.072,.038-.158,.038-.232,0l-5.87-3.091c0-.414-.336-.75-.75-.75s-.75,.336-.75,.75c0,.559,.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327,0-.414-.336-.75-.75-.75Z"></path>
   </g>
@@ -124,15 +124,15 @@
 </svg>
 						</div> <span class="nav-link-text ms-1">Quản lý sản phẩm</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link  "
+				<li class="nav-item"><a class="nav-link  active"
 					href="CoverServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
   <title>sparkle-3</title>
-  <g fill="#3a416f">
+  <g fill="#ffffff">
     <path d="M3.025,5.623c.068,.204,.26,.342,.475,.342s.406-.138,.475-.342l.421-1.263,1.263-.421c.204-.068,.342-.259,.342-.474s-.138-.406-.342-.474l-1.263-.421-.421-1.263c-.137-.408-.812-.408-.949,0l-.421,1.263-1.263,.421c-.204,.068-.342,.259-.342,.474s.138,.406,.342,.474l1.263,.421,.421,1.263Z"></path>
-    <path d="M16.525,8.803l-4.535-1.793-1.793-4.535c-.227-.572-1.168-.572-1.395,0l-1.793,4.535-4.535,1.793c-.286,.113-.475,.39-.475,.697s.188,.584,.475,.697l4.535,1.793,1.793,4.535c.113,.286,.39,.474,.697,.474s.584-.188,.697-.474l1.793-4.535,4.535-1.793c.286-.113,.475-.39,.475-.697s-.188-.584-.475-.697Z" fill="#3a416f"></path>
+    <path d="M16.525,8.803l-4.535-1.793-1.793-4.535c-.227-.572-1.168-.572-1.395,0l-1.793,4.535-4.535,1.793c-.286,.113-.475,.39-.475,.697s.188,.584,.475,.697l4.535,1.793,1.793,4.535c.113,.286,.39,.474,.697,.474s.584-.188,.697-.474l1.793-4.535,4.535-1.793c.286-.113,.475-.39,.475-.697s-.188-.584-.475-.697Z" fill="#ffffff"></path>
   </g>
 </svg>
 						</div> <span class="nav-link-text ms-1">Site Cover</span>
@@ -175,11 +175,13 @@
 				<div class="col-12">
 					<div class="card mb-4">
 						<div class="card-header pb-0">
-							<h5>Danh sách danh mục sản phẩm</h5>
+							<h5>Danh sách Site Cover</h5>
 						</div>
+						<%@ include file="addCover.jsp" %>
+						
 						<div class="card-body px-0 pt-0 pb-2">
-								<p align="center"><a href="addCategory.jsp"
-													class="text-secondary font-weight-bold text-xs"
+								<p align="center"><a href="#" id="openModalLink1"
+													class="text-secondary font-weight-bold text-xs" 
 													data-toggle="tooltip" data-original-title="Add category"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
   <title>square-plus</title>
   <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#ffffff"></rect>
@@ -199,6 +201,9 @@
 												Tên danh mục</th>
 											<th
 												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+												Mô tả thêm</th>
+											<th
+												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
 												Đường dẫn</th>
 											<th
 												class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -207,54 +212,45 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="category" items="${data}">
+										<c:forEach var="c" items="${data}">
 											<tr>
 												<td>
 													<div class="d-flex px-2 py-1">
 														<div class="d-flex flex-column justify-content-center">
-															<h6 class="mb-0 text-sm">${category.categoryName}</h6>
-															<p class="text-xs text-secondary mb-0">ID:${category.categoryId}</p>
+															<h6 class="mb-0 text-sm">${c.coverName}</h6>
+															<p class="text-xs text-secondary mb-0">ID:${c.coverId}</p>
 														</div>
 													</div>
 												</td>
+												<td style="white-space: normal;">
+													<p class="text-xs font-weight-bold mb-0">${c.description}</p>
+												</td>
 												<td>
-													<p class="text-xs font-weight-bold mb-0">${category.link}</p>
+													<p class="text-xs font-weight-bold mb-0">${c.link}</p>
 												</td>
 												<td class="align-middle text-center text-sm"><span
-													class="badge badge-sm ${category.status == 1 ? 'bg-gradient-success' : 'bg-gradient-danger'}">
-														${category.status == 1 ? 'CÓ' : 'KHÔNG'} </span></td>
-												<td class="align-middle"><a
-													href="UpdateCategoryServlet?categoryId=${category.categoryId}"
-													class="text-secondary font-weight-bold text-xs"
-													data-toggle="tooltip" data-original-title="Edit category">
-														<svg xmlns="http://www.w3.org/2000/svg" width="18"
-															height="18" viewBox="0 0 18 18">
+													class="badge badge-sm ${c.status == 1 ? 'bg-gradient-success' : 'bg-gradient-danger'}">
+														${c.status == 1 ? 'CHỌN' : 'KHÔNG'} </span></td>
+												<td class="align-middle"><a href="UpdateCoverServlet?coverId=${c.coverId}"
+													class="text-secondary font-weight-bold text-xs" 
+													data-toggle="tooltip" data-original-title="Edit cover">
+														<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
   <title>pen-3</title>
-  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2"
-																ry="2" stroke="none" fill="#ffffff"></rect>
+  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#ffffff"></rect>
   <g fill="#8db762">
-    <path
-																d="M15.152,2.848c-.998-.998-2.74-.997-3.738,0L3.605,10.657c-.863,.864-1.401,3.406-1.593,4.459-.044,.242,.034,.491,.208,.665,.142,.142,.333,.22,.53,.22,.044,0,.089-.004,.134-.012,1.053-.191,3.595-.729,4.459-1.593l5.495-5.495,.217,.217c.487,.487,.487,1.28,0,1.768l-1.586,1.586c-.293,.293-.293,.768,0,1.061,.146,.146,.338,.22,.53,.22s.384-.073,.53-.22l1.586-1.586c1.072-1.072,1.072-2.816,0-3.889l-.217-.217,1.253-1.253c1.03-1.031,1.03-2.707,0-3.738Zm-1.061,2.677l-1.253,1.253-1.617-1.617,1.253-1.253c.216-.216,.503-.334,.809-.334s.592,.119,.808,.334c.445,.446,.445,1.171,0,1.617Z"
-																fill="#8db762"></path>
+    <path d="M15.152,2.848c-.998-.998-2.74-.997-3.738,0L3.605,10.657c-.863,.864-1.401,3.406-1.593,4.459-.044,.242,.034,.491,.208,.665,.142,.142,.333,.22,.53,.22,.044,0,.089-.004,.134-.012,1.053-.191,3.595-.729,4.459-1.593l5.495-5.495,.217,.217c.487,.487,.487,1.28,0,1.768l-1.586,1.586c-.293,.293-.293,.768,0,1.061,.146,.146,.338,.22,.53,.22s.384-.073,.53-.22l1.586-1.586c1.072-1.072,1.072-2.816,0-3.889l-.217-.217,1.253-1.253c1.03-1.031,1.03-2.707,0-3.738Zm-1.061,2.677l-1.253,1.253-1.617-1.617,1.253-1.253c.216-.216,.503-.334,.809-.334s.592,.119,.808,.334c.445,.446,.445,1.171,0,1.617Z" fill="#8db762"></path>
   </g>
-</svg>
-												</a> <a href="#" class="text-secondary font-weight-bold text-xs"
-													data-toggle="tooltip" data-original-title="Delete category"
-													onclick="doDelete('${category.categoryId}')"> <svg
-															xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-															viewBox="0 0 18 18">
+</svg></a> <a href="#"
+													class="text-secondary font-weight-bold text-xs"
+													data-toggle="tooltip" data-original-title="Delete category" onclick="doDelete('${c.coverId}')">
+														<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
   <title>trash</title>
-  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2"
-																ry="2" stroke="none" fill="#ffffff"></rect>
+  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#ffffff"></rect>
   <g fill="#ff5f53">
-    <path
-																d="M15.25,3.5h-3.25v-.75c0-.965-.785-1.75-1.75-1.75h-2.5c-.965,0-1.75,.785-1.75,1.75v.75H2.75c-.414,0-.75,.336-.75,.75s.336,.75,.75,.75H15.25c.414,0,.75-.336,.75-.75s-.336-.75-.75-.75Zm-7.75-.75c0-.138,.112-.25,.25-.25h2.5c.138,0,.25,.112,.25,.25v.75h-3v-.75Z"></path>
-    <path
-																d="M13.5,6H4.5c-.206,0-.402,.084-.544,.234s-.216,.35-.205,.556l.4,7.604c.077,1.461,1.283,2.606,2.746,2.606h4.205c1.463,0,2.669-1.145,2.746-2.605l.4-7.605c.011-.206-.063-.406-.205-.556s-.338-.234-.544-.234Z"
-																fill="#ff5f53"></path>
+    <path d="M15.25,3.5h-3.25v-.75c0-.965-.785-1.75-1.75-1.75h-2.5c-.965,0-1.75,.785-1.75,1.75v.75H2.75c-.414,0-.75,.336-.75,.75s.336,.75,.75,.75H15.25c.414,0,.75-.336,.75-.75s-.336-.75-.75-.75Zm-7.75-.75c0-.138,.112-.25,.25-.25h2.5c.138,0,.25,.112,.25,.25v.75h-3v-.75Z"></path>
+    <path d="M13.5,6H4.5c-.206,0-.402,.084-.544,.234s-.216,.35-.205,.556l.4,7.604c.077,1.461,1.283,2.606,2.746,2.606h4.205c1.463,0,2.669-1.145,2.746-2.605l.4-7.605c.011-.206-.063-.406-.205-.556s-.338-.234-.544-.234Z" fill="#ff5f53"></path>
   </g>
-</svg>
-												</a></td>
+</svg> </a></td>
 											</tr>
 										</c:forEach>
 
@@ -269,6 +265,68 @@
 	</main>
 
 	</div>
+	
+<!-- 	<script>
+    function showForm() {
+        var form = document.getElementById('addForm');
+        form.style.display = 'block';
+    }
+
+    function hideForm() {
+        var form = document.getElementById('addForm');
+        form.style.display = 'none';
+    }
+	</script> -->
+
+	<script>
+		// JavaScript để kích hoạt modal khi nút được nhấp
+		document.getElementById('openModalLink1').addEventListener(
+				'click',
+				function() {
+					// Kích hoạt modal1
+					var myModal1 = new bootstrap.Modal(document
+							.getElementById('staticBackdrop1'));
+					myModal1.show();
+				});
+		
+		  /* document.getElementById('openModalLink2').addEventListener('click', function() {
+			    // Kích hoạt Modal 2
+			    var myModal2 = new bootstrap.Modal(document.getElementById('staticBackdrop2'));
+			    myModal2.show();
+			  });
+		  document.getElementById('saveButton').addEventListener('click', function (event) {
+			    event.preventDefault();  // Ngăn chặn hành vi mặc định của nút submit
+
+			    // Thu thập dữ liệu từ form
+			    var formData = new FormData(document.getElementById('updateForm'));
+
+			    // Gửi Ajax request đến UpdateCoverServlet
+			    $.ajax({
+			      type: 'POST',
+			      url: 'UpdateCoverServlet',
+			      data: formData,
+			      processData: false,
+			      contentType: false,
+			      success: function(response) {
+			    	  var result = JSON.parse(response);
+
+			    	  if (result.success) {
+			    	    // Đóng modal hoặc thực hiện các bước cần thiết
+			    	    $('#staticBackdrop2').modal('hide');
+			    	    // Ví dụ: Hiển thị thông báo thành công
+			    	    alert(result.message);
+			    	  } else {
+			    	    // Xử lý trường hợp lỗi nếu cần
+			    	    alert('Lỗi: ' + result.message);
+			    	  }
+			      },
+			      error: function(error) {
+			        console.log('Error:', error);
+			      }
+			    });
+			  }); */
+	</script>
+	
 	<!--   Core JS Files   -->
 	<script src="./js/popper.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
@@ -284,6 +342,8 @@
 					options);
 		}
 	</script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Github buttons -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

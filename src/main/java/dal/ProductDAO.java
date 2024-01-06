@@ -404,11 +404,163 @@ public class ProductDAO extends DBContext {
         return filteredProductHtml.toString();
     }
     
-	/*
-	 * public List<Product> getProductByKeyword(String keyword){ List<Product> list
-	 * = new ArrayList<>();
-	 * 
-	 * }
-	 */
-
+    public String getSortedProductsHtml(List<Product> sortedProducts) {
+    	StringBuilder filteredProductHtml = new StringBuilder();
+    	for (Product product : sortedProducts) {
+            filteredProductHtml.append("<div class=\"col-sm-6 col-lg-4 mb-4\" data-aos=\"fade-up\">");
+            filteredProductHtml.append("<div class=\"block-4 text-center border\">");
+            filteredProductHtml.append("<figure class=\"block-4-image\">");
+            filteredProductHtml.append("<a href=\"ProductDetailsServlet?productId=")
+                    .append(product.getProductId()).append("\"><img src=\"").append(product.getImageUrl())
+                    .append("\" alt=\"").append(product.getProductName()).append("\" class=\"img-fluid\"></a>");
+            filteredProductHtml.append("</figure>");
+            filteredProductHtml.append("<div class=\"block-4-text p-4\">");
+            filteredProductHtml.append("<h3><a href=\"ProductDetailsServlet?productId=")
+                    .append(product.getProductId()).append("\">")
+                    .append(product.getProductName().length() > 20 ?
+                            product.getProductName().substring(0, 20) + "..." : product.getProductName())
+                    .append("</a></h3>");
+            filteredProductHtml.append("<p class=\"mb-0\">")
+                    .append(product.getDescription().length() > 50 ?
+                            product.getDescription().substring(0, 50) + "..." : product.getDescription())
+                    .append("</p>");
+            filteredProductHtml.append("<p class=\"text-primary font-weight-bold\">")
+                    .append(product.getPrice()).append(" VNĐ</p>");
+            filteredProductHtml.append("</div></div></div>");
+        }
+    	return filteredProductHtml.toString();
+    }
+    
+    public List<Product> getProductNameAcs() {
+		List<Product> list = new ArrayList<>();
+		String sSql = "select * from `products` order by productName asc;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sSql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int productId = rs.getInt(1);
+				String productName = rs.getString(2);
+				String sku = rs.getString(3);
+				String description = rs.getString(4);
+				double price = rs.getDouble(5);
+				int quantityInStock = rs.getInt(6);
+				int manufacturerId = rs.getInt(7);
+				ManufacturerDAO md = new ManufacturerDAO();
+				Manufacturer manufacturer = md.getManufacturerById(manufacturerId);
+				String productionDate = rs.getString(8);
+				String expirationDate = rs.getString(9);
+				int subcategoryId = rs.getInt(10);
+				SubCategoryDAO sd = new SubCategoryDAO();
+				SubCategory subcategory = sd.getSubCategoryById(subcategoryId);
+				String imageUrl = rs.getString(11);
+				String status = rs.getString(12);
+				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
+						manufacturer, productionDate, expirationDate, subcategory, imageUrl, status);
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+    public List<Product> getProductNameDesc() {
+		List<Product> list = new ArrayList<>();
+		String sSql = "select * from `products` order by productName desc;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sSql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int productId = rs.getInt(1);
+				String productName = rs.getString(2);
+				String sku = rs.getString(3);
+				String description = rs.getString(4);
+				double price = rs.getDouble(5);
+				int quantityInStock = rs.getInt(6);
+				int manufacturerId = rs.getInt(7);
+				ManufacturerDAO md = new ManufacturerDAO();
+				Manufacturer manufacturer = md.getManufacturerById(manufacturerId);
+				String productionDate = rs.getString(8);
+				String expirationDate = rs.getString(9);
+				int subcategoryId = rs.getInt(10);
+				SubCategoryDAO sd = new SubCategoryDAO();
+				SubCategory subcategory = sd.getSubCategoryById(subcategoryId);
+				String imageUrl = rs.getString(11);
+				String status = rs.getString(12);
+				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
+						manufacturer, productionDate, expirationDate, subcategory, imageUrl, status);
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+    public List<Product> getProductPriceAcs() {
+		List<Product> list = new ArrayList<>();
+		String sSql = "select * from `products` order by price asc;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sSql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int productId = rs.getInt(1);
+				String productName = rs.getString(2);
+				String sku = rs.getString(3);
+				String description = rs.getString(4);
+				double price = rs.getDouble(5);
+				int quantityInStock = rs.getInt(6);
+				int manufacturerId = rs.getInt(7);
+				ManufacturerDAO md = new ManufacturerDAO();
+				Manufacturer manufacturer = md.getManufacturerById(manufacturerId);
+				String productionDate = rs.getString(8);
+				String expirationDate = rs.getString(9);
+				int subcategoryId = rs.getInt(10);
+				SubCategoryDAO sd = new SubCategoryDAO();
+				SubCategory subcategory = sd.getSubCategoryById(subcategoryId);
+				String imageUrl = rs.getString(11);
+				String status = rs.getString(12);
+				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
+						manufacturer, productionDate, expirationDate, subcategory, imageUrl, status);
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+    public List<Product> getProductPriceDesc() {
+		List<Product> list = new ArrayList<>();
+		String sSql = "select * from `products` order by price desc;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sSql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int productId = rs.getInt(1);
+				String productName = rs.getString(2);
+				String sku = rs.getString(3);
+				String description = rs.getString(4);
+				double price = rs.getDouble(5);
+				int quantityInStock = rs.getInt(6);
+				int manufacturerId = rs.getInt(7);
+				ManufacturerDAO md = new ManufacturerDAO();
+				Manufacturer manufacturer = md.getManufacturerById(manufacturerId);
+				String productionDate = rs.getString(8);
+				String expirationDate = rs.getString(9);
+				int subcategoryId = rs.getInt(10);
+				SubCategoryDAO sd = new SubCategoryDAO();
+				SubCategory subcategory = sd.getSubCategoryById(subcategoryId);
+				String imageUrl = rs.getString(11);
+				String status = rs.getString(12);
+				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
+						manufacturer, productionDate, expirationDate, subcategory, imageUrl, status);
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
