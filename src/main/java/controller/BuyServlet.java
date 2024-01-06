@@ -15,15 +15,15 @@ import java.util.List;
 import dal.ProductDAO;
 
 /**
- * Servlet implementation class CartServlet
+ * Servlet implementation class BuyServlet
  */
-public class CartServlet extends HttpServlet {
+public class BuyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CartServlet() {
+    public BuyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,20 +33,7 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ProductDAO pd = new ProductDAO();
-		List<Product> list = pd.getAll();
-		Cookie[] arr = request.getCookies();
-		String txt = "";
-		if (arr!=null) {
-			for(Cookie o : arr) {
-				if(o.getName().equals("cart")) {
-					txt+=o.getValue();
-				}
-			}
-		}
-		Cart cart = new Cart(txt, list);
-		request.setAttribute("cart", cart);
-		request.getRequestDispatcher("cart.jsp").forward(request, response);
+		
 	}
 
 	/**
@@ -54,7 +41,36 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		ProductDAO d = new ProductDAO();
+//		List<Product> list = d.getAll();
+		Cookie[] arr = request.getCookies();
+		String txt = "";
+	    String productId = request.getParameter("productId");
+	    String quantity = request.getParameter("quantity");
+
+	    if (arr != null) {
+	        for (Cookie o : arr) {
+	            if (o.getName().equals("cart")) {
+	                txt += o.getValue();
+	                o.setMaxAge(0);
+	                response.addCookie(o);
+	        	    }
+	            }
+	        }
+	    
+	    if (txt.isEmpty()) {
+	        txt = productId + ":" + quantity;
+	    } else {
+	        txt = txt + "," + productId + ":" + quantity;
+	
+	    }
+	
+	    Cookie c = new Cookie("cart", txt);
+	    c.setMaxAge(24*60*60);
+	    response.addCookie(c);
+	    
+//	    request.getRequestDispatcher("shop-single.jsp");
+//	    response.sendRedirect("shop-single.jsp");
 	}
 
 }

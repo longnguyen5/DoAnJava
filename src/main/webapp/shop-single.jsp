@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,48 +49,29 @@
 						<p>
 							<strong class="text-primary h4">${c.price}VND</strong>
 						</p>
-						<div class="mb-1 d-flex">
-							<label for="option-sm" class="d-flex mr-3 mb-3"> <span
-								class="d-inline-block mr-2"
-								style="top: -2px; position: relative;"><input
-									type="radio" id="option-sm" name="shop-sizes"></span> <span
-								class="d-inline-block text-black">Small</span>
-							</label> <label for="option-md" class="d-flex mr-3 mb-3"> <span
-								class="d-inline-block mr-2"
-								style="top: -2px; position: relative;"><input
-									type="radio" id="option-md" name="shop-sizes"></span> <span
-								class="d-inline-block text-black">Medium</span>
-							</label> <label for="option-lg" class="d-flex mr-3 mb-3"> <span
-								class="d-inline-block mr-2"
-								style="top: -2px; position: relative;"><input
-									type="radio" id="option-lg" name="shop-sizes"></span> <span
-								class="d-inline-block text-black">Large</span>
-							</label> <label for="option-xl" class="d-flex mr-3 mb-3"> <span
-								class="d-inline-block mr-2"
-								style="top: -2px; position: relative;"><input
-									type="radio" id="option-xl" name="shop-sizes"></span> <span
-								class="d-inline-block text-black"> Extra Large</span>
-							</label>
-						</div>
+						<form id="buyform" action="BuyServlet" method="post">
 						<div class="mb-5">
 							<div class="input-group mb-3" style="max-width: 120px;">
 								<div class="input-group-prepend">
-									<button class="btn btn-outline-primary js-btn-minus"
+									<button class="btn btn-outline-primary js-btn-minus" onclick="decreaseQuantity()"
 										type="button">&minus;</button>
 								</div>
 								<input type="text" class="form-control text-center" value="1"
 									placeholder="" aria-label="Example text with button addon"
 									aria-describedby="button-addon1">
 								<div class="input-group-append">
-									<button class="btn btn-outline-primary js-btn-plus"
+									<button class="btn btn-outline-primary js-btn-plus" onclick="increaseQuantity()"
 										type="button">&plus;</button>
 								</div>
 							</div>
 
 						</div>
 						<p>
-							<a href="cart.jsp" class="buy-now btn btn-sm btn-primary">Thêm vào giỏ</a>
+							<a href="javascript:void(0);" onclick="updateBuyNowLink()"
+								 class="buy-now btn btn-sm btn-primary">Thêm
+								vào giỏ</a>
 						</p>
+						</form>
 
 					</div>
 				</div>
@@ -189,6 +171,42 @@
 
 		<jsp:include page="footer.jsp" />
 	</div>
+
+	<script>
+/* 		 function updateBuyNowLink() {
+			var productId = "${c.productId}";
+			var quantity = document.querySelector('.form-control.text-center').value;
+			var buyNowLink = document.getElementById("buy-now-link");
+			buyNowLink.href = "BuyServlet?productId=" + productId + "&quantity="
+					+ quantity;
+		}  */
+		 function updateBuyNowLink(event) {
+		    event.preventDefault(); // Ngăn chặn hành động mặc định của form
+
+		    var productId = "${c.productId}";
+		    var quantity = document.querySelector('.form-control.text-center').value;
+
+		    // Tạo yêu cầu XMLHttpRequest
+		    var xhr = new XMLHttpRequest();
+		    xhr.onreadystatechange = function() {
+		        if (xhr.readyState === XMLHttpRequest.DONE) {
+		            if (xhr.status === 200) {
+		                // Xử lý khi yêu cầu thành công
+		                console.log("Đã thêm vào giỏ hàng!");
+		            } else {
+		                // Xử lý khi yêu cầu không thành công
+		                console.error("Lỗi khi thêm vào giỏ hàng!");
+		            }
+		        }
+		    };
+
+		    // Tạo yêu cầu POST đến AddToCartServlet
+		    xhr.open("POST", "BuyServlet", true);
+		    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		    xhr.send("productId=" + productId + "&quantity=" + quantity);
+		}
+		document.querySelector('.buy-now').addEventListener('click', updateBuyNowLink);		
+	</script>
 
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery-ui.js"></script>

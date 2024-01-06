@@ -38,7 +38,7 @@
 			</div>
 			<div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 				<h3 class="footer-heading mb-4">QR Code</h3>
-				<a href="#" class="block-6"> <img src="images/rickroll.jpg"
+				<a href="https://youtu.be/dQw4w9WgXcQ" class="block-6"> <img src="images/rickroll.jpg"
 					alt="Image placeholder" class="img-fluid rounded mb-4">
 					<h3 class="font-weight-light mb-0">Quét mã để nhận quà</h3>
 				</a>

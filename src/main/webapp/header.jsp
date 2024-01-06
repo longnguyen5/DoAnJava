@@ -57,8 +57,8 @@ if (categories == null) {
 						<ul>
 							<li><a href="#"><span class="icon icon-person"></span></a></li>
 							<li><a href="CategoryServlet"><span class="icon icon-heart-o"></span></a></li>
-							<li><a href="cart.jsp" class="site-cart"> <span
-									class="icon icon-shopping_cart"></span> <span class="count">2</span>
+							<li><a href="CartServlet" class="site-cart"> <span
+									class="icon icon-shopping_cart"></span> <span class="count">${sessionScope.size }</span>
 							</a></li>
 							<li class="d-inline-block d-md-none ml-md-0"><a href="#"
 								class="site-menu-toggle js-menu-toggle"> <span
