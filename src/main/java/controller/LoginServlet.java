@@ -8,10 +8,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Account;
+import model.Product;
 
 import java.io.IOException;
+import java.util.List;
 
 import dal.AccountDAO;
+import dal.ProductDAO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -54,6 +57,7 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("account", a);
+
 			response.sendRedirect("HeaderServlet");
 		}
 	}

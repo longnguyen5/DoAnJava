@@ -39,8 +39,8 @@ if (categories == null) {
 				<!-- Search bar -->
 				<div
 					class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-					<form action="" class="site-block-top-search">
-						<span class="icon icon-search2"></span> <input type="text"
+					<form action="SearchServlet" method="get" class="site-block-top-search">
+						<span class="icon icon-search2"></span> <input type="text" name="keyword"
 							class="form-control border-0" placeholder="Tìm kiếm">
 					</form>
 				</div>
@@ -58,7 +58,7 @@ if (categories == null) {
 							<li><a href="#"><span class="icon icon-person"></span></a></li>
 							<li><a href="CategoryServlet"><span class="icon icon-heart-o"></span></a></li>
 							<li><a href="CartServlet" class="site-cart"> <span
-									class="icon icon-shopping_cart"></span> <span class="count">${sessionScope.size }</span>
+									class="icon icon-shopping_cart"></span>
 							</a></li>
 							<li class="d-inline-block d-md-none ml-md-0"><a href="#"
 								class="site-menu-toggle js-menu-toggle"> <span

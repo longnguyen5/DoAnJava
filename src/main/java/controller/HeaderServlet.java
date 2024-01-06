@@ -46,30 +46,9 @@ public class HeaderServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("account");
-
-        ProductDAO d = new ProductDAO();
-        List<Product> list = d.getAll();
-        Cookie[] arr = request.getCookies();
-        String txt = "";
-        if (arr != null) {
-            for (Cookie cookie : arr) {
-                if (cookie.getName().equals("cart")) {
-                    txt += cookie.getValue();
-                }
-            }
-        }
-        Cart cart = new Cart(txt, list);
-        List<Item> listItem = cart.getItems();
-        int n;
-        if (listItem != null) {
-            n = listItem.size();
-        } else
-            n = 0;
-        request.getSession().setAttribute("size", n);
-    
-        // request.setAttribute("data", list);
-//        request.getRequestDispatcher("header.jsp").forward(request, response);
-
+		ProductDAO pd = new ProductDAO();
+		List<Product> list = pd.spNoiBat();
+		session.setAttribute("spnoibat", list);
         // Lấy danh sách categories từ database
         CategoryDAO cd = new CategoryDAO();
         List<model.Category> categories = cd.getAllCategory();
@@ -81,6 +60,8 @@ public class HeaderServlet extends HttpServlet {
 
         request.setAttribute("account", account);
 
+        
+        
         // Lưu danh sách vào Session
         request.getSession().setAttribute("categories", categories);
 

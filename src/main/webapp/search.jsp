@@ -42,7 +42,8 @@
 						<div class="row">
 							<div class="col-md-12 mb-5">
 								<div class="float-md-left mb-4">
-									<h2 class="text-black h5">Tất cả sản phẩm</h2>
+									
+									<h2 class="text-black h5">Tìm kiếm theo từ khóa:${requestScope.key }</h2>
 								</div>
 								<div class="d-flex">
 									<div class="dropdown mr-1 ml-md-auto">
@@ -120,26 +121,7 @@
 						<div class="row" data-aos="fade-up">
 							<div class="col-md-12 text-center">
 								<div class="site-block-27">
-									<ul>
-										<c:if test="${currentPage > 1}">
-											<li><a href="ProductServlet?page=${currentPage - 1}">&lt;</a></li>
-										</c:if>
-
-										<c:forEach var="page" begin="1" end="${totalPages}">
-											<c:choose>
-												<c:when test="${page eq currentPage}">
-													<li class="active"><span>${page}</span></li>
-												</c:when>
-												<c:otherwise>
-													<li><a href="ProductServlet?page=${page}">${page}</a></li>
-												</c:otherwise>
-											</c:choose>
-										</c:forEach>
-
-										<c:if test="${currentPage < totalPages}">
-											<li><a href="ProductServlet?page=${currentPage + 1}">&gt;</a></li>
-										</c:if>
-									</ul>
+	
 								</div>
 							</div>
 						</div>
@@ -154,7 +136,7 @@
 									<li class="mb-1"><a
 										href="SubCategoriesServlet?subcategoryId=${subcategory.subcategoryId}"
 										class="d-flex"><span>${subcategory.subcategoryName}</span>
-											<span class="text-black ml-auto"></span></a></li>
+											<span class="text-black ml-auto">(2,124)</span></a></li>
 								</c:forEach>
 							</ul>
 						</div>

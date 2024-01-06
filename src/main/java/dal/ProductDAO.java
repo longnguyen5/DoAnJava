@@ -45,6 +45,76 @@ public class ProductDAO extends DBContext {
 
 		return list;
 	}
+	public List<Product> getProductByKeyword(String m) {
+		List<Product> list = new ArrayList<>();
+		String sSql = "select * from `products` where `productName` like '%"+m+"%'";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sSql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int productId = rs.getInt(1);
+				String productName = rs.getString(2);
+				String sku = rs.getString(3);
+				String description = rs.getString(4);
+				double price = rs.getDouble(5);
+				int quantityInStock = rs.getInt(6);
+				int manufacturerId = rs.getInt(7);
+				ManufacturerDAO md = new ManufacturerDAO();
+				Manufacturer manufacturer = md.getManufacturerById(manufacturerId);
+				String productionDate = rs.getString(8);
+				String expirationDate = rs.getString(9);
+				int subcategoryId = rs.getInt(10);
+				SubCategoryDAO sd = new SubCategoryDAO();
+				SubCategory subcategory = sd.getSubCategoryById(subcategoryId);
+				String imageUrl = rs.getString(11);
+				String status = rs.getString(12);
+				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
+						manufacturer, productionDate, expirationDate, subcategory, imageUrl, status);
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	public List<Product> spNoiBat(){
+		List<Product> list = new ArrayList<>();
+		String sSql = "select * from `products` order by productId desc limit 0,5;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(sSql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int productId = rs.getInt(1);
+				String productName = rs.getString(2);
+				String sku = rs.getString(3);
+				String description = rs.getString(4);
+				double price = rs.getDouble(5);
+				int quantityInStock = rs.getInt(6);
+				int manufacturerId = rs.getInt(7);
+				ManufacturerDAO md = new ManufacturerDAO();
+				Manufacturer manufacturer = md.getManufacturerById(manufacturerId);
+				String productionDate = rs.getString(8);
+				String expirationDate = rs.getString(9);
+				int subcategoryId = rs.getInt(10);
+				SubCategoryDAO sd = new SubCategoryDAO();
+				SubCategory subcategory = sd.getSubCategoryById(subcategoryId);
+				String imageUrl = rs.getString(11);
+				String status = rs.getString(12);
+				Product product = new Product(productId, productName, sku, description, price, quantityInStock,
+						manufacturer, productionDate, expirationDate, subcategory, imageUrl, status);
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 
 	public Product getProductById(int id) {
 		String sSql = "Select * from `products` where `productId` = ?";

@@ -4,36 +4,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<footer class="site-footer border-top bg-light">
+<footer class="site-footer border-top ">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 mb-5 mb-lg-0">
 				<div class="row">
-					<!-- <div class="col-md-12">
+					<div class="col-md-12">
 						<h3 class="footer-heading mb-4">Navigations</h3>
 					</div>
 					<div class="col-md-6 col-lg-4">
 						<ul class="list-unstyled">
-							<li><a href="#">Sell online</a></li>
-							<li><a href="#">Features</a></li>
-							<li><a href="#">Shopping cart</a></li>
-							<li><a href="#">Store builder</a></li>
+							<li><a href="#">Một sản phẩm</a></li>
+							<li><a href="#">của</a></li>
+							<li><a href="#">Nhóm</a></li>
+							<li><a href="#">5</a></li>
 						</ul>
 					</div>
 					<div class="col-md-6 col-lg-4">
 						<ul class="list-unstyled">
-							<li><a href="#">Mobile commerce</a></li>
-							<li><a href="#">Dropshipping</a></li>
-							<li><a href="#">Website development</a></li>
+							<li><a href="#">Không có gì</a></li>
+							<li><a href="#">ở đây</a></li>
+							<li><a href="#">hết</a></li>
 						</ul>
 					</div>
 					<div class="col-md-6 col-lg-4">
 						<ul class="list-unstyled">
-							<li><a href="#">Point of sale</a></li>
-							<li><a href="#">Hardware</a></li>
-							<li><a href="#">Software</a></li>
+							<li><a href="#">Bánh khúc</a></li>
+							<li><a href="#">Bánh khúc</a></li>
+							<li><a href="#">Bánh khúc</a></li>
 						</ul>
-					</div> -->
+					</div>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
