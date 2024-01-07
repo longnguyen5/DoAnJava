@@ -60,7 +60,7 @@
 						<span class="nav-link-text ms-1">Quản lý danh mục</span>
 					</a>
 				</li>
-				<li class="nav-item">
+				<%-- <li class="nav-item">
 					<a class="nav-link  " href="EmployeesServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -77,7 +77,7 @@
 						</div>
 						<span class="nav-link-text ms-1">Quản lý nhân viên</span>
 					</a>
-				</li>
+				</li> --%>
 				<li class="nav-item">
 					<a class="nav-link  active" href="ManusServlet">
 						<div
@@ -106,7 +106,7 @@
 					</a>
 				</li>
 				<li class="nav-item"><a class="nav-link  "
-					href="table-products.jsp">
+					href="ProductListServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -240,32 +240,6 @@
 </svg></a></td>
 											</tr>
 										</c:forEach>
-<!-- 										<tr>
-											<td>
-												<div class="d-flex px-2 py-1">
-													<div class="d-flex flex-column justify-content-center">
-														<h6 class="mb-0 text-sm">John Michael</h6>
-														<p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-													</div>
-												</div>
-											</td>
-											<td>
-												<p class="text-xs font-weight-bold mb-0">Manager</p>
-												<p class="text-xs text-secondary mb-0">Organization</p>
-											</td>
-											<td class="align-middle text-center text-sm">
-												<span class="badge badge-sm bg-gradient-success">Online</span>
-											</td>
-											<td class="align-middle text-center">
-												<span clas	s="text-secondary text-xs font-weight-bold">23/04/18</span>
-											</td>
-											<td class="align-middle">
-												<a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-													data-toggle="tooltip" data-original-title="Edit user">
-													Edit
-												</a>
-											</td>
-										</tr> -->
 									</tbody>
 								</table>
 							</div>

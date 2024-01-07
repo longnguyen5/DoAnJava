@@ -1,65 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>
-		Hệ thống quản lý bánh khúc
-	</title>
-	<!--     Fonts and icons     -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700" rel="stylesheet" />
-	<!-- Nucleo Icons -->
-	<link href="./css/nucleo-icons.css" rel="stylesheet" />
-	<link href="./css/nucleo-svg.css" rel="stylesheet" />
-	<!-- Font Awesome Icons -->
-	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-	<link href="./css/nucleo-svg.css" rel="stylesheet" />
-	<!-- CSS Files -->
-	<link id="pagestyle" href="./css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
-	<script type="text/javascript">
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Hệ thống quản lý bánh khúc</title>
+<!--     Fonts and icons     -->
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700"
+	rel="stylesheet" />
+<!-- Nucleo Icons -->
+<link href="./css/nucleo-icons.css" rel="stylesheet" />
+<link href="./css/nucleo-svg.css" rel="stylesheet" />
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js"
+	crossorigin="anonymous"></script>
+<link href="./css/nucleo-svg.css" rel="stylesheet" />
+<!-- CSS Files -->
+<link id="pagestyle" href="./css/soft-ui-dashboard.css?v=1.0.3"
+	rel="stylesheet" />
+<script type="text/javascript">
 	function doDelete(productId) {
 		if (confirm("Bạn có chắc chắn xóa Danh mục với ID = " + productId)) {
 			window.location = "DeleteProductServlet?productId=" + productId;
 		}
 	}
- 	</script>
+</script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-	<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
+	<aside
+		class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
 		id="sidenav-main">
 		<div class="sidenav-header">
-			<i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-				aria-hidden="true" id="iconSidenav"></i>
-			<a class="navbar-brand m-0" href="HeaderServlet"
-				target="_blank">
-				<span class="ms-1 font-weight-bold">Quản lý hệ thống</span>
+			<i
+				class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+				aria-hidden="true" id="iconSidenav"></i> <a class="navbar-brand m-0"
+				href="HeaderServlet" target="_blank"> <span
+				class="ms-1 font-weight-bold">Quản lý hệ thống</span>
 			</a>
 		</div>
 		<hr class="horizontal dark mt-0">
-		<div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+		<div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100"
+			id="sidenav-collapse-main">
 			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link  " href="CategoryServlet">
+				<li class="nav-item"><a class="nav-link  "
+					href="CategoryServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+								viewBox="0 0 18 18">
   <title>layers-3</title>
-  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#ffff"></rect>
+  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2"
+									ry="2" stroke="none" fill="#ffff"></rect>
   <g fill="#3a416f">
-    <path d="M15.685,4.423L9.816,1.333c-.511-.271-1.121-.27-1.631,0L2.315,4.423c-.494,.26-.801,.769-.801,1.327s.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327s-.307-1.067-.801-1.327Z" fill="#3a416f"></path>
-    <path d="M15.736,8.25c-.414,0-.75,.336-.75,.75l-5.87,3.091c-.072,.038-.158,.038-.232,0l-5.87-3.091c0-.414-.336-.75-.75-.75s-.75,.336-.75,.75c0,.559,.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327,0-.414-.336-.75-.75-.75Z"></path>
-    <path d="M15.736,11.5c-.414,0-.75,.336-.75,.75l-5.87,3.091c-.072,.038-.158,.038-.232,0l-5.87-3.091c0-.414-.336-.75-.75-.75s-.75,.336-.75,.75c0,.559,.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327,0-.414-.336-.75-.75-.75Z"></path>
+    <path
+									d="M15.685,4.423L9.816,1.333c-.511-.271-1.121-.27-1.631,0L2.315,4.423c-.494,.26-.801,.769-.801,1.327s.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327s-.307-1.067-.801-1.327Z"
+									fill="#3a416f"></path>
+    <path
+									d="M15.736,8.25c-.414,0-.75,.336-.75,.75l-5.87,3.091c-.072,.038-.158,.038-.232,0l-5.87-3.091c0-.414-.336-.75-.75-.75s-.75,.336-.75,.75c0,.559,.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327,0-.414-.336-.75-.75-.75Z"></path>
+    <path
+									d="M15.736,11.5c-.414,0-.75,.336-.75,.75l-5.87,3.091c-.072,.038-.158,.038-.232,0l-5.87-3.091c0-.414-.336-.75-.75-.75s-.75,.336-.75,.75c0,.559,.307,1.067,.801,1.327l5.869,3.09c.255,.135,.536,.203,.816,.203s.56-.067,.815-.202l5.87-3.091c.494-.26,.801-.769,.801-1.327,0-.414-.336-.75-.75-.75Z"></path>
   </g>
 </svg>
-						</div>
-						<span class="nav-link-text ms-1">Quản lý danh mục</span>
-					</a>
-				</li>
-				<li class="nav-item">
+						</div> <span class="nav-link-text ms-1">Quản lý danh mục</span>
+				</a></li>
+				<%-- <li class="nav-item">
 					<a class="nav-link " href="EmployeesServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -76,76 +86,87 @@
 						</div>
 						<span class="nav-link-text ms-1">Quản lý nhân viên</span>
 					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link  " href="ManusServlet">
+				</li> --%>
+				<li class="nav-item"><a class="nav-link  " href="ManusServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 							<svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
-								xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+								xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink">
 								<title>credit-card</title>
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF"
-										fill-rule="nonzero">
+								<g stroke="none" stroke-width="1" fill="none"
+									fill-rule="evenodd">
+									<g transform="translate(-2169.000000, -745.000000)"
+									fill="#FFFFFF" fill-rule="nonzero">
 										<g transform="translate(1716.000000, 291.000000)">
 											<g transform="translate(453.000000, 454.000000)">
 												<path class="color-background opacity-6"
-													d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z">
+									d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z">
 												</path>
 												<path class="color-background"
-													d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+									d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
 												</path>
 											</g>
 										</g>
 									</g>
 								</g>
 							</svg>
-						</div>
-						<span class="nav-link-text ms-1">Quản lý nhà cung cấp</span>
-					</a>
-				</li>
+						</div> <span class="nav-link-text ms-1">Quản lý nhà cung cấp</span>
+				</a></li>
 				<li class="nav-item"><a class="nav-link  active"
-					href="table-products.jsp">
+					href="ProductListServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+								viewBox="0 0 18 18">
   <title>box</title>
   <g fill="#ffffff">
-    <path d="M13.25,5h-3.5v2.75c0,.414-.336,.75-.75,.75s-.75-.336-.75-.75v-2.75h-3.5c-1.517,0-2.75,1.233-2.75,2.75v5.5c0,1.517,1.233,2.75,2.75,2.75H13.25c1.517,0,2.75-1.233,2.75-2.75V7.75c0-1.517-1.233-2.75-2.75-2.75ZM7.25,13.5h-2c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75h2c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75Z" fill="#ffffff"></path>
-    <path d="M8.25,1.5h-2.009c-1.052,0-1.996,.586-2.464,1.529l-.348,.703c.418-.138,.857-.231,1.321-.231h3.5V1.5Z"></path>
-    <path d="M14.223,3.028c-.468-.942-1.412-1.528-2.464-1.528h-2.009V3.5h3.5c.464,0,.903,.093,1.322,.231l-.348-.703Z"></path>
+    <path
+									d="M13.25,5h-3.5v2.75c0,.414-.336,.75-.75,.75s-.75-.336-.75-.75v-2.75h-3.5c-1.517,0-2.75,1.233-2.75,2.75v5.5c0,1.517,1.233,2.75,2.75,2.75H13.25c1.517,0,2.75-1.233,2.75-2.75V7.75c0-1.517-1.233-2.75-2.75-2.75ZM7.25,13.5h-2c-.414,0-.75-.336-.75-.75s.336-.75,.75-.75h2c.414,0,.75,.336,.75,.75s-.336,.75-.75,.75Z"
+									fill="#ffffff"></path>
+    <path
+									d="M8.25,1.5h-2.009c-1.052,0-1.996,.586-2.464,1.529l-.348,.703c.418-.138,.857-.231,1.321-.231h3.5V1.5Z"></path>
+    <path
+									d="M14.223,3.028c-.468-.942-1.412-1.528-2.464-1.528h-2.009V3.5h3.5c.464,0,.903,.093,1.322,.231l-.348-.703Z"></path>
   </g>
 </svg>
 						</div> <span class="nav-link-text ms-1">Quản lý sản phẩm</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link  "
-					href="CoverServlet">
+				<li class="nav-item"><a class="nav-link  " href="CoverServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+								viewBox="0 0 18 18">
   <title>sparkle-3</title>
   <g fill="#3a416f">
-    <path d="M3.025,5.623c.068,.204,.26,.342,.475,.342s.406-.138,.475-.342l.421-1.263,1.263-.421c.204-.068,.342-.259,.342-.474s-.138-.406-.342-.474l-1.263-.421-.421-1.263c-.137-.408-.812-.408-.949,0l-.421,1.263-1.263,.421c-.204,.068-.342,.259-.342,.474s.138,.406,.342,.474l1.263,.421,.421,1.263Z"></path>
-    <path d="M16.525,8.803l-4.535-1.793-1.793-4.535c-.227-.572-1.168-.572-1.395,0l-1.793,4.535-4.535,1.793c-.286,.113-.475,.39-.475,.697s.188,.584,.475,.697l4.535,1.793,1.793,4.535c.113,.286,.39,.474,.697,.474s.584-.188,.697-.474l1.793-4.535,4.535-1.793c.286-.113,.475-.39,.475-.697s-.188-.584-.475-.697Z" fill="#3a416f"></path>
+    <path
+									d="M3.025,5.623c.068,.204,.26,.342,.475,.342s.406-.138,.475-.342l.421-1.263,1.263-.421c.204-.068,.342-.259,.342-.474s-.138-.406-.342-.474l-1.263-.421-.421-1.263c-.137-.408-.812-.408-.949,0l-.421,1.263-1.263,.421c-.204,.068-.342,.259-.342,.474s.138,.406,.342,.474l1.263,.421,.421,1.263Z"></path>
+    <path
+									d="M16.525,8.803l-4.535-1.793-1.793-4.535c-.227-.572-1.168-.572-1.395,0l-1.793,4.535-4.535,1.793c-.286,.113-.475,.39-.475,.697s.188,.584,.475,.697l4.535,1.793,1.793,4.535c.113,.286,.39,.474,.697,.474s.584-.188,.697-.474l1.793-4.535,4.535-1.793c.286-.113,.475-.39,.475-.697s-.188-.584-.475-.697Z"
+									fill="#3a416f"></path>
   </g>
 </svg>
 						</div> <span class="nav-link-text ms-1">Site Cover</span>
 				</a></li>
 	</aside>
-	<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+	<main
+		class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
 		<!-- Navbar -->
-		<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-			navbar-scroll="true">
+		<nav
+			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+			id="navbarBlur" navbar-scroll="true">
 			<div class="container-fluid py-1 px-3">
 				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-						<li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Bánh khúc</a>
-						</li>
-						<li class="breadcrumb-item text-sm text-dark active" aria-current="page">Bảng</li>
+					<ol
+						class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+						<li class="breadcrumb-item text-sm"><a
+							class="opacity-5 text-dark" href="javascript:;">Bánh khúc</a></li>
+						<li class="breadcrumb-item text-sm text-dark active"
+							aria-current="page">Bảng</li>
 					</ol>
 					<h6 class="font-weight-bolder mb-0">Bảng</h6>
 				</nav>
-				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+								<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 					<div class="ms-md-auto pe-md-3 d-flex align-items-center">
 						<div class="input-group">
 							<span class="input-group-text text-body"><i class="fas fa-search"
@@ -153,6 +174,7 @@
 							<input type="text" class="form-control" placeholder="Type here...">
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</nav>
@@ -165,18 +187,28 @@
 							<h5>Danh sách sản phẩm</h5>
 						</div>
 						<div class="card-body px-0 pt-0 pb-2">
-								<p align="center"><a href="addCategory.jsp"
-													class="text-secondary font-weight-bold text-xs"
-													data-toggle="tooltip" data-original-title="Add category"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+							<p align="center">
+								<a href="addProduct.jsp"
+									class="text-secondary font-weight-bold text-xs"
+									data-toggle="tooltip" data-original-title="Add category"><svg
+										xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+										viewBox="0 0 18 18">
   <title>square-plus</title>
-  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2" ry="2" stroke="none" fill="#ffffff"></rect>
+  <rect data-element="frame" x="0" y="0" width="16" height="16" rx="2"
+											ry="2" stroke="none" fill="#ffffff"></rect>
   <g fill="#8392be" stroke="#8392be">
-    <rect x="2.75" y="2.75" width="12.5" height="12.5" rx="2" ry="2" fill="none" stroke="#8392be" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></rect>
-    <line x1="5.75" y1="9" x2="12.25" y2="9" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></line>
-    <line x1="9" y1="5.75" x2="9" y2="12.25" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></line>
+    <rect x="2.75" y="2.75" width="12.5" height="12.5" rx="2" ry="2"
+											fill="none" stroke="#8392be" stroke-linecap="round"
+											stroke-linejoin="round" stroke-width="1.5"></rect>
+    <line x1="5.75" y1="9" x2="12.25" y2="9" fill="none"
+											stroke-linecap="round" stroke-linejoin="round"
+											stroke-width="1.5"></line>
+    <line x1="9" y1="5.75" x2="9" y2="12.25" fill="none"
+											stroke-linecap="round" stroke-linejoin="round"
+											stroke-width="1.5"></line>
   </g>
-</svg>
-														Thêm mới </a></p>
+</svg> Thêm mới </a>
+							</p>
 							<div class="table-responsive p-0">
 								<table class="table align-items-center mb-0">
 									<thead>
@@ -200,37 +232,40 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="category" items="${data}">
+										<c:forEach var="c" items="${data}">
 											<tr>
 												<td>
 													<div class="d-flex px-2 py-1">
 														<div class="d-flex flex-column justify-content-center">
-															<p class="text-xs text-secondary mb-0">ID:${category.sku}</p>
-															<h6 class="mb-0 text-sm">${category.subcategoryId}.${category.manufacturerId} ${category.productName}</h6>
-															<p class="text-xs text-secondary mb-0">ID:${category.productId}</p>
+															<p class="text-xs text-secondary mb-0">SKU
+																ID:${c.sku}</p>
+															<h6 class="mb-0 text-sm"><%-- ${c.subcategory.subcategoryId}. --%>
+																<%-- ${c.manufacturer.manufacturerId} --%> ${c.productName}</h6>
+															<p class="text-xs text-secondary mb-0">ID:${c.productId}</p>
 														</div>
 													</div>
 												</td>
-												
+
 												<td>
-													<p class="text-xs font-weight-bold mb-0">${category.imageUrl}</p>
+													<p class="text-xs font-weight-bold mb-0">${c.imageUrl}</p>
 												</td>
-												
+
 												<td style="white-space: normal;">
-													<p class="text-xs font-weight-bold mb-0">${category.description}</p>
-													<p class="text-xs font-weight-bold mb-0">${category.proDate}-${category.expDate }</p>
+													<p class="text-xs font-weight-bold mb-0">${c.description}</p>
+													<p class="text-xs font-weight-bold mb-0">${c.proDate}-
+														${c.expDate }</p>
 												</td>
-												
+
 												<td class="align-middle text-center text-sm"><span
-													class="badge badge-sm ${category.status == 1 ? 'bg-gradient-success' : 'bg-gradient-danger'}">
-														${category.status == 1 ? 'CÒN' : 'HẾT'} </span></td>
-												
+													class="badge badge-sm ${c.status == 1 ? 'bg-gradient-success' : 'bg-gradient-danger'}">
+														${c.status == 1 ? 'CÒN' : 'HẾT'} </span></td>
+
 												<td>
-													<p class="text-xs font-weight-bold mb-0">${category.quantityInStock}</p>
+													<p class="text-xs font-weight-bold mb-0">${c.quantityInStock}</p>
 												</td>
-												
+
 												<td class="align-middle"><a
-													href="UpdateProductServlet?productId=${category.productId}"
+													href="UpdateProductServlet?productId=${c.productId}"
 													class="text-secondary font-weight-bold text-xs"
 													data-toggle="tooltip" data-original-title="Edit category">
 														<svg xmlns="http://www.w3.org/2000/svg" width="18"
@@ -246,7 +281,7 @@
 </svg>
 												</a> <a href="#" class="text-secondary font-weight-bold text-xs"
 													data-toggle="tooltip" data-original-title="Delete category"
-													onclick="doDelete('${category.productId}')"> <svg
+													onclick="doDelete('${c.productId}')"> <svg
 															xmlns="http://www.w3.org/2000/svg" width="18" height="18"
 															viewBox="0 0 18 18">
   <title>trash</title>
@@ -263,7 +298,6 @@
 												</a></td>
 											</tr>
 										</c:forEach>
-
 									</tbody>
 								</table>
 							</div>
@@ -271,10 +305,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</main>
+
 	
-	</div>
 	<!--   Core JS Files   -->
 	<script src="./js/popper.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
@@ -284,9 +317,10 @@
 		var win = navigator.platform.indexOf('Win') > -1;
 		if (win && document.querySelector('#sidenav-scrollbar')) {
 			var options = {
-				damping: '0.5'
+				damping : '0.5'
 			}
-			Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+			Scrollbar.init(document.querySelector('#sidenav-scrollbar'),
+					options);
 		}
 	</script>
 	<!-- Github buttons -->

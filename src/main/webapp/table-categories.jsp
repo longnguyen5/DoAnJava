@@ -66,7 +66,7 @@
 </svg>
 						</div> <span class="nav-link-text ms-1">Quản lý danh mục</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link  "
+				<%-- <li class="nav-item"><a class="nav-link  "
 					href="EmployeesServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -81,7 +81,7 @@
   </g>
 </svg>
 						</div> <span class="nav-link-text ms-1">Quản lý nhân viên</span>
-				</a></li>
+				</a></li> --%>
 				<li class="nav-item"><a class="nav-link  "
 					href="ManusServlet">
 						<div
@@ -110,7 +110,7 @@
 						</div> <span class="nav-link-text ms-1">Quản lý nhà cung cấp</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link  "
-					href="table-products.jsp">
+					href="ProductListServlet">
 						<div
 							class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">

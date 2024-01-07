@@ -633,4 +633,77 @@ public class ProductDAO extends DBContext {
 		}
 		return list;
 	}
+    
+    public void insert (Product p) {
+    	String sql = "insert into products values (?,?,?,?,?,?,?,?,?,?,?,?)";
+    	try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, p.getProductId());
+			ps.setString(2, p.getProductName());
+			ps.setString(3, p.getSku());
+			ps.setString(4, p.getDescription());
+			ps.setDouble(5, p.getPrice());
+			ps.setInt(6, p.getQuantityInStock());
+			ps.setInt(7, p.getManufacturer().getManufacturerId());
+			ps.setString(8, p.getProductionDate());
+			ps.setString(9, p.getExpirationDate());
+			ps.setInt(10, p.getSubCategory().getSubcategoryId());
+			ps.setString(11, p.getImageUrl());
+			ps.setString(12, p.getStatus());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    public void update (Product p) {
+    	String sql = "UPDATE `store2023`.`products`\r\n"
+    			+ "SET\r\n"
+    			+ "`productId` = ?,\r\n"
+    			+ "`productName` = ?,\r\n"
+    			+ "`sku` = ?,\r\n"
+    			+ "`description` = ?,\r\n"
+    			+ "`price` = ?,\r\n"
+    			+ "`quantityInStock` = ?,\r\n"
+    			+ "`manufacturerId` = ?,\r\n"
+    			+ "`proDate` = ?,\r\n"
+    			+ "`expDate` = ?,\r\n"
+    			+ "`subcategoryId` = ?,\r\n"
+    			+ "`imageUrl` = ?,\r\n"
+    			+ "`status` = ?\r\n"
+    			+ "WHERE `productId` = ?;";
+    	try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, p.getProductName());
+			ps.setString(2, p.getSku());
+			ps.setString(3, p.getDescription());
+			ps.setDouble(4, p.getPrice());
+			   ps.setInt(5, p.getQuantityInStock());
+			ps.setInt(6, p.getManufacturer().getManufacturerId());
+			ps.setString(7, p.getProductionDate());
+			ps.setString(8, p.getExpirationDate());
+			ps.setInt(9, p.getSubCategory().getSubcategoryId());
+			ps.setString(10, p.getImageUrl());
+			ps.setString(11, p.getStatus());
+			
+			ps.setInt(12, p.getProductId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    public void delete (int id) {
+    	String sql = "delete from products where productId = ?";
+    	try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 }
