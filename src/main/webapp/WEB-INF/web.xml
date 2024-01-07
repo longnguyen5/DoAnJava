@@ -348,4 +348,14 @@
     <servlet-name>DeleteProductServlet</servlet-name>
     <url-pattern>/DeleteProductServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PayServlet</display-name>
+    <servlet-name>PayServlet</servlet-name>
+    <servlet-class>controller.PayServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PayServlet</servlet-name>
+    <url-pattern>/PayServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

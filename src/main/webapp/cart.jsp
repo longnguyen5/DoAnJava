@@ -136,7 +136,7 @@
 
 								<div class="row">
 									<div class="col-md-12">
-										<form action="checkout" method="post">										
+										<form action="PayServlet" method="post">										
 											<input type="submit" value="Thanh toán"/>
 										</form>
 									</div>
